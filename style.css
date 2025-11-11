@@ -84,7 +84,7 @@ header {
 
 /* ----------------------------- Hero ----------------------------- */
 .hero {
-  background: url('village.jpg') center/cover no-repeat;
+  background: url('header-bg.jpg') center/cover no-repeat;
   color: white;
   text-align: center;
   padding: 80px 20px;
@@ -266,3 +266,4 @@ footer {
     margin: 8px 0;
   }
 }
+
