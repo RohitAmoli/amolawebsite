@@ -1,13 +1,169 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Live Programs - Amola Yuva Shakti Mandal Samiti</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Programs - Amola Yuva Shakti Mandal Samiti</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+      color: #333;
+      text-align: center;
+    }
+
+    /* HEADER */
+    header {
+      background: url('header-bg1.png') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 50px 0;
+      position: relative;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+    }
+
+    .header-center {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    header img {
+      width: 100px;
+      height: auto;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      border: 2px solid white;
+    }
+
+    header .text h1 {
+      font-size: 2em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+      margin: 10px 0 5px;
+    }
+
+    header .text p {
+      font-size: 1.1em;
+      font-weight: 500;
+      color: #f0f0f0;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background-color: #000;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 14px 20px;
+      display: block;
+      transition: background 0.3s;
+      font-weight: 500;
+    }
+
+    .navbar a:hover {
+      background-color: #333;
+    }
+
+    /* SECTION */
+    section {
+      padding: 40px 20px;
+    }
+
+    #live h2 {
+      font-size: 1.8em;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    #live p {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    /* VIDEO GALLERY */
+    .video-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .video-thumbnail {
+      position: relative;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .video-thumbnail:hover {
+      transform: scale(1.05);
+    }
+
+    .video-thumbnail img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.5em;
+      color: white;
+      opacity: 0.8;
+    }
+
+    .video-title {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header .text h1 { font-size: 1.4em; }
+      header .text p { font-size: 1em; }
+      header img { width: 80px; }
+    }
+  </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <div class="header-center">
     <img src="IMG-20250911-WA0006.jpg" alt="Logo">
@@ -18,6 +174,7 @@
   </div>
 </header>
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <a href="index.html">Home</a>
   <a href="about.html">About Us</a>
@@ -27,9 +184,10 @@
   <a href="join.html">Join Us</a>
   <a href="donate.html">Support Us</a>
   <a href="contact.html">Contact</a>
-   <a href="member.html">Member Login</a>
+  <a href="member.html">Member Login</a>
 </nav>
 
+<!-- LIVE SECTION -->
 <section id="live" class="section">
   <h2>Watch Our Programs</h2>
   <p>Stay connected! Watch our events, awareness campaigns, and cultural programs live on YouTube or Facebook.</p>
@@ -40,54 +198,44 @@
         <img src="https://img.youtube.com/vi/3aaXkYOrSFw/hqdefault.jpg" alt="Watch Live on YouTube">
         <div class="play-button">▶</div>
       </a>
-      <strong><p class="video-title">ग्राम सभा - अमोला</p></strong>
+      <p class="video-title">ग्राम सभा - अमोला</p>
     </div>
+
     <div class="video-thumbnail">
       <a href="https://www.youtube.com/watch?v=D1tk3CzPFVQ" target="_blank">
         <img src="https://img.youtube.com/vi/D1tk3CzPFVQ/hqdefault.jpg" alt="Watch Live on YouTube">
         <div class="play-button">▶</div>
       </a>
-      <strong><p class="video-title">52 गढ़ होम स्टे, अमोला</p></strong>
+      <p class="video-title">52 गढ़ होम स्टे, अमोला</p>
     </div>
 
-<div class="video-thumbnail">
-  <a href="https://youtu.be/77V22u_h3-w?si=8X353kiizELGcWg1" target="_blank">
-    <img src="https://img.youtube.com/vi/77V22u_h3-w/hqdefault.jpg" alt="Watch Live on YouTube">
-    <div class="play-button">▶</div>
-  </a>
-  <strong><p class="video-title">रामलीला 2021 । इंद्र गाना</p></strong>
-</div>
+    <div class="video-thumbnail">
+      <a href="https://youtu.be/77V22u_h3-w?si=8X353kiizELGcWg1" target="_blank">
+        <img src="https://img.youtube.com/vi/77V22u_h3-w/hqdefault.jpg" alt="Watch Live on YouTube">
+        <div class="play-button">▶</div>
+      </a>
+      <p class="video-title">रामलीला 2021 । इंद्र गाना</p>
+    </div>
 
-<div class="video-thumbnail">
-  <a href="https://youtube.com/shorts/L1j1CIb2gVw?si=rB4" target="_blank">
-    <img src="https://img.youtube.com/vi/L1j1CIb2gVw/hqdefault.jpg" alt="Watch Live on YouTube">
-    <div class="play-button">▶</div>
-  </a>
-  <strong><p class="video-title">मेघनाद 🔥🔥 अमोला ताछला रामलीला</p></strong>
-</div>
+    <div class="video-thumbnail">
+      <a href="https://youtube.com/shorts/L1j1CIb2gVw?si=rB4" target="_blank">
+        <img src="https://img.youtube.com/vi/L1j1CIb2gVw/hqdefault.jpg" alt="Watch Live on YouTube">
+        <div class="play-button">▶</div>
+      </a>
+      <p class="video-title">मेघनाद 🔥🔥 अमोला ताछला रामलीला</p>
+    </div>
 
-<div class="video-thumbnail">
-  <a href="https://youtube.com/shorts/kIFhOB9jGBo?si=7CD6vnxpMqga53" target="_blank">
-    <img src="https://img.youtube.com/vi/kIFhOB9jGBo/hqdefault.jpg" alt="Watch Live on YouTube">
-    <div class="play-button">▶</div>
-  </a>
-  <strong><p class="video-title">सीता स्वयंवर में परशुराम । अमोला रामलीला </p></strong>
-</div>
-
-<div class="video-thumbnail">
-  <a href="https://youtube.com/shorts/kIFhOB9jGBo?si=Hltyk8P1fRj7G4yd" target="_blank">
-    <img src="https://img.youtube.com/vi/kIFhOB9jGBo/hqdefault.jpg" alt="Watch Live on YouTube">
-    <div class="play-button">▶</div>
-  </a>
-  <strong><p class="video-title">सीता स्वयंवर में परशुराम । अमोला रामलीला</p></strong>
-</div>
-
-
-
-    
+    <div class="video-thumbnail">
+      <a href="https://youtube.com/shorts/kIFhOB9jGBo?si=7CD6vnxpMqga53" target="_blank">
+        <img src="https://img.youtube.com/vi/kIFhOB9jGBo/hqdefault.jpg" alt="Watch Live on YouTube">
+        <div class="play-button">▶</div>
+      </a>
+      <p class="video-title">सीता स्वयंवर में परशुराम । अमोला रामलीला</p>
+    </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   © 2025 Amola Yuva Shakti Mandal Samiti | All Rights Reserved<br>
   Designed & Managed by Rohit Amoli
@@ -95,7 +243,3 @@
 
 </body>
 </html>
-
-
-
-
