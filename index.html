@@ -3,42 +3,215 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amola Yuva Shakti Mandal Samiti </title>
-  <link rel="stylesheet" href="style.css">
+  <title>Amola Yuva Shakti Mandal Samiti - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* HEADER */
+    header {
+      position: relative;
+      background: url('header-bg1.png') no-repeat center center/cover;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4));
+      z-index: 1;
+    }
+
+    .header-center {
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 1.6s ease-in-out;
+    }
+
+    .header-center img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 0 15px rgba(255,255,255,0.4);
+      margin-bottom: 10px;
+      transition: transform 0.4s ease;
+    }
+
+    .header-center img:hover {
+      transform: scale(1.08);
+    }
+
+    .header-center h1 {
+      font-size: 2.2em;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin: 0;
+      text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+    }
+
+    .header-center p {
+      font-size: 1.1em;
+      font-weight: 400;
+      margin-top: 8px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: linear-gradient(90deg, #111, #222);
+      text-align: center;
+      padding: 10px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 500;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .navbar a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 0%;
+      height: 2px;
+      background: #00c6ff;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .navbar a:hover {
+      color: #00c6ff;
+      text-shadow: 0 0 10px #00c6ff;
+    }
+
+    .navbar a:hover::after {
+      width: 50%;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      background: url('header-bg9.png') no-repeat center center/cover;
+      text-align: center;
+      color: #fff;
+      padding: 100px 20px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    .hero h1, .hero p, .hero button {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 2.2em;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      font-weight: 400;
+      margin-bottom: 25px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      animation: fadeInUp 1.4s ease;
+    }
+
+    .hero button {
+      background: linear-gradient(90deg, #007bff, #00c6ff);
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1.1em;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,123,255,0.4);
+      animation: fadeInUp 1.8s ease;
+    }
+
+    .hero button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,123,255,0.6);
+    }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(90deg, #111, #222);
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.95em;
+      line-height: 1.6;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+    }
+
+    footer b {
+      color: #00c6ff;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @media (max-width: 600px) {
+      header { height: 200px; }
+      .hero { padding: 80px 15px; }
+      .hero h1 { font-size: 1.7em; }
+      .hero p { font-size: 1em; }
+    }
+  </style>
 </head>
+
 <body>
 
 <!-- HEADER -->
-<header style="
-  background: url('header-bg1.png') no-repeat center center/cover;
-  color: white;
-  text-align: center;
-  padding: 60px 20px;
-  position: relative;
-">
-
-  <!-- Overlay for better readability -->
-  <div style="
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-  "></div>
-
-  <div class="header-center" style="position: relative; z-index: 2;">
-    <img src="IMG-20250911-WA0006.jpg" alt="Village Youth Sangthan Logo" style="
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: 3px solid white;
-      margin-bottom: 15px;
-    ">
+<header>
+  <div class="header-center">
+  <!--  <img src="IMG-20250911-WA0006.jpg" alt="Village Youth Sangthan Logo">-->
     <div class="text">
-      <h1 style="font-size: 2em; margin: 0;">Amola Yuva Shakti Mandal Samiti</h1>
-      <p style="font-size: 1.1em; margin-top: 10px;">
-        Empowering Our Village Through Unity, Education & Progress
-      </p>
+      <h1>Amola Yuva Shakti Mandal Samiti</h1>
+      <p>Empowering Our Village Through Unity, Education & Progress</p>
     </div>
   </div>
 </header>
@@ -59,17 +232,14 @@
 <!-- HERO -->
 <section class="hero">
   <h1>“हमारा गांव, हमारी जिम्मेदारी”</h1>
-  <p>“स्वच्छ गाँव, स्वस्थ गाँव, शिक्षित गाँव, संस्कारित गाँव, स्वावलंबी गाँव व सशक्त गाँव।”</p>
+  <p>“स्वच्छ गाँव, स्वस्थ गाँव, शिक्षित गाँव, संस्कारित गाँव, स्वावलंबी गाँव व सशक्त गाँव”</p>
   <button onclick="window.location='join.html'">Join Us</button>
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer>
   © 2025 Amola Yuva Shakti Mandal Samiti | All Rights Reserved<br>
-  Designed & Managed by Rohit Amoli
-<p>हमारे विज़िटर्स:</p>
-  <img src="https://hitwebcounter.com/counter/counter.php?page=123456&style=0006&nbdigits=5&type=ip&initCount=0" title="Visitors" alt="Visitor Counter">
-
+  Designed & Managed by <b>Rohit Amoli and Team</b>
 </footer>
 
 </body>
