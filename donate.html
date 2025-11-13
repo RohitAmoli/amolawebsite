@@ -1,13 +1,153 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Support Us - Amola Yuva Shakti Mandal Samiti</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support Us - Amola Yuva Shakti Mandal Samiti</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+      color: #333;
+      text-align: center;
+    }
+
+    /* HEADER */
+    header {
+      background: url('header-bg1.png') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 50px 0;
+      position: relative;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+    }
+
+    .header-center {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    header img {
+      width: 100px;
+      height: auto;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      border: 2px solid white;
+    }
+
+    header .text h1 {
+      font-size: 2em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+      margin: 10px 0 5px;
+    }
+
+    header .text p {
+      font-size: 1.1em;
+      font-weight: 500;
+      color: #f0f0f0;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background-color: #000;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 14px 20px;
+      display: block;
+      transition: background 0.3s;
+      font-weight: 500;
+    }
+
+    .navbar a:hover {
+      background-color: #333;
+    }
+
+    /* DONATE SECTION */
+    section {
+      padding: 40px 20px;
+    }
+
+    #donate h2 {
+      font-size: 1.8em;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    #donate p {
+      max-width: 700px;
+      margin: 0 auto 25px;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    #donate img {
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+      border: 2px solid #000;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #28a745;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #218838;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header .text h1 { font-size: 1.4em; }
+      header .text p { font-size: 1em; }
+      header img { width: 80px; }
+    }
+  </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <div class="header-center">
     <img src="IMG-20250911-WA0006.jpg" alt="Logo">
@@ -18,6 +158,7 @@
   </div>
 </header>
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <a href="index.html">Home</a>
   <a href="about.html">About Us</a>
@@ -27,18 +168,20 @@
   <a href="join.html">Join Us</a>
   <a href="donate.html">Support Us</a>
   <a href="contact.html">Contact</a>
-   <a href="member.html">Member Login</a>
+  <a href="member.html">Member Login</a>
 </nav>
 
-<section id="donate" class="section donate-section">
+<!-- DONATE SECTION -->
+<section id="donate">
   <h2>Support Our Mission</h2>
-  <p>Your contribution helps us continue our education, environment, and employment initiatives.</p>
+  <p>Every contribution helps us empower our community through education, environment awareness, and employment initiatives.</p>
   <img src="qr-code.png" alt="UPI QR Code" />
   <p><strong>UPI ID:</strong> amolayuvashaktimandalsamiti@upi</p>
   <p><strong>Bank:</strong> ABC Bank, A/C No. XXXXXXXX1234, IFSC: ABCD0001234</p>
   <a href="upi://pay?pa=sangthanname@upi&pn=Village+Youth+Sangthan&cu=INR" class="btn">Donate via UPI</a>
 </section>
 
+<!-- FOOTER -->
 <footer>
   © 2025 Amola Yuva Shakti Mandal Samiti | All Rights Reserved<br>
   Designed & Managed by Rohit Amoli
@@ -46,4 +189,3 @@
 
 </body>
 </html>
-
