@@ -5,6 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Gallery - Amola Yuva Shakti Mandal Samiti</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8f9fa;
+  }
+  header img {
+    height: 80px;
+    border-radius: 50%;
+  }
+  #gallery {
+    text-align: center;
+    padding: 30px 10px;
+  }
+  #gallery h2 {
+    color: #333;
+  }
+  #gallery p {
+    color: #555;
+    margin-bottom: 20px;
+  }
+  .drive-frame {
+    width: 95%;
+    max-width: 1000px;
+    height: 80vh;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  /* Lightbox styling */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+  }
+  .lightbox iframe {
+    width: 90%;
+    height: 90%;
+    border: none;
+    border-radius: 10px;
+  }
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
 </head>
 <body>
 
@@ -23,7 +80,7 @@
   <a href="about.html">About Us</a>
   <a href="activities.html">Activities</a>
   <a href="live.html">Live Program</a>
-  <a href="gallery.html">Gallery</a>
+  <a href="gallery.html" class="active">Gallery</a>
   <a href="join.html">Join Us</a>
   <a href="donate.html">Support</a>
   <a href="contact.html">Contact</a>
@@ -31,32 +88,46 @@
 
 <section id="gallery" class="section">
   <h2>Gallery</h2>
-  <p>Photos from our events, campaigns, and cultural programs.</p>
+  <p>Images from our events, campaigns, and cultural programs.</p>
 
-  <div class="about-gallery">
-    <img src="gallery1.jpg" alt="Event 1">
-   <img src="gallery2.jpg" alt="Event 2">
-    <img src="gallery3.jpg" alt="Event 3">
-    <img src="gallery4.jpg" alt="Event 4">
-    <img src="gallery5.jpg" alt="Event 5">
-   <img src="gallery6.jpg" alt="Event 6">
-  </div>
+  <!-- Embedded Google Drive folder -->
+  <iframe
+    id="driveFrame"
+    class="drive-frame"
+    src="https://drive.google.com/embeddedfolderview?id=1LRV1waPI0LXhrmwegxq0-5b-StvMrN4h#grid"
+    allowfullscreen>
+  </iframe>
 </section>
+
+<!-- Lightbox popup -->
+<div id="lightbox" class="lightbox">
+  <span class="close-btn" onclick="closeLightbox()">×</span>
+  <iframe id="lightboxFrame"></iframe>
+</div>
 
 <footer>
   © 2025 Amola Yuva Shakti Mandal Samiti | All Rights Reserved<br>
   Designed & Managed by Rohit Amoli
 </footer>
 
+<script>
+  // Optional: open the Drive folder in popup lightbox (if you want to show larger view)
+  const lightbox = document.getElementById('lightbox');
+  const lightboxFrame = document.getElementById('lightboxFrame');
+
+  document.getElementById('driveFrame').addEventListener('click', (e) => {
+    // only works for direct file clicks; Drive iframe limits link interception
+    e.preventDefault();
+    lightbox.style.display = 'flex';
+    lightboxFrame.src = e.target.href || 'https://drive.google.com/drive/folders/1LRV1waPI0LXhrmwegxq0-5b-StvMrN4h';
+  });
+
+  function closeLightbox() {
+    lightbox.style.display = 'none';
+    lightboxFrame.src = '';
+  }
+</script>
+
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
