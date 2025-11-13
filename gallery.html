@@ -1,159 +1,179 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gallery - Amola Yuva Shakti Mandal Samiti</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery - Amola Yuva Shakti Mandal Samiti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-<style>
-  body {
-    font-family: "Poppins", sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #fafafa;
-    color: #333;
-    text-align: center;
-  }
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      text-align: center;
+      line-height: 1.6;
+    }
 
-  /* HEADER */
-  header {
-    background: url('header-bg1.png') no-repeat center center/cover;
-    color: white;
-    text-align: center;
-    padding: 50px 0;
-    position: relative;
-  }
+    /* HEADER */
+    header {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                  url('header-bg1.png') center/cover no-repeat;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      animation: fadeInDown 1s ease-in-out;
+    }
 
-  header::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.55);
-    z-index: 0;
-  }
+    .header-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
 
-  .header-center {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+    .header-center img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 3px solid white;
+      object-fit: cover;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
 
-  header img {
-    width: 100px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    border: 2px solid white;
-  }
+    .header-center h1 {
+      font-size: 1.9em;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
 
-  header .text h1 {
-    font-size: 2em;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #fff;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-    margin: 10px 0 5px;
-  }
+    .header-center p {
+      font-size: 1em;
+      font-weight: 300;
+    }
 
-  header .text p {
-    font-size: 1.1em;
-    font-weight: 500;
-    color: #f0f0f0;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-  }
+    /* NAVBAR */
+    nav.navbar {
+      background-color: #000;
+      padding: 10px 0;
+      text-align: center;
+      animation: fadeIn 1.2s ease-in-out;
+    }
 
-  /* NAVBAR */
-  .navbar {
-    background-color: #000;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+    nav.navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
 
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 14px 20px;
-    display: block;
-    transition: background 0.3s;
-    font-weight: 500;
-  }
+    nav.navbar a:hover {
+      color: #00c6ff;
+      transform: scale(1.1);
+      text-shadow: 0 0 10px #00c6ff;
+    }
 
-  .navbar a:hover {
-    background-color: #333;
-  }
+    /* GALLERY SECTION */
+    section#gallery {
+      padding: 60px 20px;
+      background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)),
+                  url('header-bg1.png') center/cover fixed;
+      border-radius: 10px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 1100px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: fadeInUp 1.2s ease-in-out;
+    }
 
-  /* GALLERY SECTION */
-  #gallery {
-    padding: 40px 20px;
-  }
+    #gallery h2 {
+      color: #007bff;
+      font-size: 1.8em;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
 
-  #gallery h2 {
-    font-size: 1.8em;
-    color: #222;
-    margin-bottom: 10px;
-  }
+    #gallery p {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      color: #444;
+      font-size: 1em;
+    }
 
-  #gallery p {
-    color: #555;
-    margin-bottom: 30px;
-  }
+    .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
 
-  .gallery-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    padding: 20px;
-  }
+    .gallery-grid img,
+    .gallery-grid iframe {
+      width: 260px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-  .gallery-grid img,
-  .gallery-grid iframe {
-    width: 260px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease;
-  }
+    .gallery-grid img:hover,
+    .gallery-grid iframe:hover {
+      transform: scale(1.06);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
 
-  .gallery-grid img:hover,
-  .gallery-grid iframe:hover {
-    transform: scale(1.05);
-  }
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 18px 0;
+      font-size: 0.9em;
+      margin-top: 40px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+    }
 
-  /* FOOTER */
-  footer {
-    background-color: #000;
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    font-size: 0.9em;
-    margin-top: 40px;
-  }
+    /* ANIMATIONS */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-  @media (max-width: 600px) {
-    header .text h1 { font-size: 1.4em; }
-    header .text p { font-size: 1em; }
-    header img { width: 80px; }
-  }
-</style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 40px 10px; }
+      .header-center h1 { font-size: 1.5em; }
+      .gallery-grid img, .gallery-grid iframe { width: 100%; height: auto; }
+      section#gallery { width: 95%; padding: 40px 15px; }
+    }
+  </style>
 </head>
+
 <body>
 
 <!-- HEADER -->
 <header>
   <div class="header-center">
     <img src="IMG-20250911-WA0006.jpg" alt="Logo">
-    <div class="text">
-      <h1>Amola Yuva Shakti Mandal Samiti</h1>
-      <p>Empowering Our Village Through Unity, Education & Progress</p>
-    </div>
+    <h1>Amola Yuva Shakti Mandal Samiti</h1>
+    <p>Empowering Our Village Through Unity, Education & Progress</p>
   </div>
 </header>
 
@@ -171,9 +191,10 @@
 </nav>
 
 <!-- GALLERY SECTION -->
-<section id="gallery" class="section">
-  <h2>Gallery</h2>
-  <p>Videos & Photos from our events, campaigns, and cultural programs.</p>
+<section id="gallery">
+  <h2>Our Gallery</h2>
+  <p>Videos & Photos from our events, awareness drives, and cultural programs.</p>
+
   <div id="galleryGrid" class="gallery-grid"></div>
 </section>
 
@@ -200,12 +221,9 @@ fetch(apiURL)
         img.src = `https://lh3.googleusercontent.com/d/${file.id}=w800`;
         img.alt = file.name;
         wrapper.appendChild(img);
-      } 
-      else if (file.type === "video") {
+      } else if (file.type === "video") {
         let iframe = document.createElement("iframe");
         iframe.src = `https://drive.google.com/file/d/${file.id}/preview`;
-        iframe.width = "100%";
-        iframe.height = "240";
         iframe.allow = "autoplay";
         iframe.frameBorder = "0";
         wrapper.appendChild(iframe);
