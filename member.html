@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Members - Amola Yuva Shakti Mandal Samiti</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body { font-family: Arial, sans-serif; margin: 0; }
+  header, footer { text-align: center; padding: 10px; background: #f4f4f4; }
+  h2 { text-align: center; margin-top: 20px; color: #333; }
+  p { text-align: center; color: #555; }
+
+  .login-container, .upload-container {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    text-align: center;
+  }
+
+  input[type="password"], input[type="file"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  #uploadSection { display: none; }
+
+  #galleryGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  #galleryGrid img, #galleryGrid video, #galleryGrid iframe {
+    width: 250px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+  }
+
+  #galleryGrid img:hover, #galleryGrid video:hover, #galleryGrid iframe:hover {
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-center">
+    <img src="IMG-20250911-WA0006.jpg" alt="Logo">
+    <div class="text">
+      <h1>Amola Yuva Shakti Mandal Samiti</h1>
+      <p>Empowering Our Village Through Unity, Education & Progress</p>
+    </div>
+  </div>
+</header>
+
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="activities.html">Activities</a>
+  <a href="live.html">Live Program</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="join.html">Join Us</a>
+  <a href="donate.html">Support</a>
+  <a href="contact.html">Contact</a>
+  <a href="members.html">Members</a>
+</nav>
+
+<section id="loginSection" class="section">
+  <div class="login-container">
+    <h2>Member Login</h2>
+    <p>Enter the access code to continue</p>
+    <input type="password" id="accessCode" placeholder="Enter Code" />
+    <button onclick="checkLogin()">Login</button>
+    <p id="loginMessage" style="color:red;"></p>
+  </div>
+</section>
+
+<section id="uploadSection" class="section">
+  <div class="upload-container">
+    <h2>Media Upload</h2>
+    <input type="file" id="fileInput" accept="image/*,video/*">
+    <button onclick="uploadFile()">Upload</button>
+    <p id="uploadStatus"></p>
+  </div>
+
+  <h2>Uploaded Media</h2>
+  <div id="galleryGrid"></div>
+</section>
+
+<footer>
+  © 2025 Amola Yuva Shakti Mandal Samiti | All Rights Reserved<br>
+  Designed & Managed by Rohit Amoli
+</footer>
+
+<script>
+const apiURL = "https://script.google.com/macros/s/AKfycbzPB8slm1_rbqK0LRppD0wKCRe5_Gpu7WuZBhiBmSFaoFDqzW_xoK0ByI8lo7GPBxeSiQ/exec"; // ✅ Your latest working URL
+const accessCode = "amola2025"; // 🔐 your shared code
+
+function checkLogin() {
+  const enteredCode = document.getElementById("accessCode").value.trim();
+  const message = document.getElementById("loginMessage");
+  if (enteredCode === accessCode) {
+    document.getElementById("loginSection").style.display = "none";
+    document.getElementById("uploadSection").style.display = "block";
+    loadGallery();
+  } else {
+    message.textContent = "Invalid code. Please try again.";
+  }
+}
+
+function loadGallery() {
+  fetch(apiURL)
+    .then(res => res.json())
+    .then(data => {
+      const grid = document.getElementById("galleryGrid");
+      grid.innerHTML = "";
+      data.forEach(file => {
+        const wrapper = document.createElement("div");
+        if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = `https://lh3.googleusercontent.com/d/${file.id}=w800`;
+          img.alt = file.name;
+          wrapper.appendChild(img);
+        } else if (file.type === "video") {
+          const iframe = document.createElement("iframe");
+          iframe.src = `https://drive.google.com/file/d/${file.id}/preview`;
+          iframe.width = "100%";
+          iframe.height = "240";
+          iframe.allow = "autoplay";
+          iframe.frameBorder = "0";
+          wrapper.appendChild(iframe);
+        }
+        grid.appendChild(wrapper);
+      });
+    })
+    .catch(err => console.error("Error loading gallery:", err));
+}
+
+function uploadFile() {
+  const fileInput = document.getElementById("fileInput");
+  const file = fileInput.files[0];
+  const status = document.getElementById("uploadStatus");
+
+  if (!file) {
+    status.textContent = "Please select a file to upload.";
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const base64Data = event.target.result.split(",")[1];
+    const payload = {
+      filename: file.name,
+      mimeType: file.type,
+      file: base64Data
+    };
+
+    status.textContent = "Uploading... Please wait.";
+
+    fetch(apiURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+    .then(res => res.json())
+    .then(result => {
+      if (result.success) {
+        status.style.color = "green";
+        status.textContent = "✅ Upload successful!";
+        fileInput.value = "";
+        loadGallery();
+      } else {
+        status.style.color = "red";
+        status.textContent = "Upload failed: " + result.error;
+      }
+    })
+    .catch(err => {
+      status.style.color = "red";
+      status.textContent = "Upload failed: " + err.message;
+    });
+  };
+
+  reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>
