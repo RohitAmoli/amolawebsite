@@ -6,188 +6,64 @@
   <title>Member Login - Amola Yuva Shakti Mandal Samiti</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background-color: #f8f9fa;
-      color: #333;
-      line-height: 1.6;
-      text-align: center;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background-color: #f8f9fa; color: #333; line-height: 1.6; text-align: center; }
 
     /* HEADER */
     header {
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                  url('header-bg1.png') center/cover no-repeat;
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
-      animation: fadeInDown 1s ease-in-out;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('header-bg1.png') center/cover no-repeat;
+      color: white; padding: 60px 20px; text-align: center; animation: fadeInDown 1s ease-in-out;
     }
-
-    .header-center {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .header-center img {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid white;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-    }
-
-    .header-center h1 {
-      font-size: 1.9em;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .header-center p {
-      font-size: 1em;
-      font-weight: 300;
-    }
+    .header-center { display:flex; flex-direction: column; align-items:center; gap:10px; }
+    .header-center img { width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid white; box-shadow:0 0 15px rgba(255,255,255,0.3); }
+    .header-center h1 { font-size:1.9em; font-weight:700; letter-spacing:1px; }
+    .header-center p { font-size:1em; font-weight:300; }
 
     /* NAVBAR */
-    nav.navbar {
-      background-color: #000;
-      padding: 10px 0;
-      text-align: center;
-      animation: fadeIn 1.2s ease-in-out;
-    }
-
-    nav.navbar a {
-      color: white;
-      text-decoration: none;
-      margin: 0 12px;
-      font-weight: 500;
-      transition: color 0.3s, transform 0.3s;
-    }
-
-    nav.navbar a:hover {
-      color: #00c6ff;
-      transform: scale(1.1);
-      text-shadow: 0 0 10px #00c6ff;
-    }
+    nav.navbar { background-color:#000; padding:10px 0; text-align:center; animation: fadeIn 1.2s ease-in-out; }
+    nav.navbar a { color:white; text-decoration:none; margin:0 12px; font-weight:500; transition: color 0.3s, transform 0.3s; }
+    nav.navbar a:hover { color:#00c6ff; transform: scale(1.1); text-shadow:0 0 10px #00c6ff; }
 
     /* MEMBER SECTION */
-    section {
-      padding: 50px 20px;
-      animation: fadeInUp 1.2s ease-in-out;
-    }
+    section { padding:50px 20px; animation: fadeInUp 1.2s ease-in-out; }
+    .login-container, .upload-container { max-width:450px; margin:20px auto; padding:30px; background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('header-bg1.png') center/cover fixed; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); text-align:center; }
+    h2 { color:#007bff; margin-bottom:15px; font-size:1.6em; font-weight:700; }
+    p { color:#555; font-size:1em; margin-bottom:10px; }
+    input[type="password"], input[type="file"], input[type="text"] { width:90%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; font-size:1em; }
 
-    .login-container, .upload-container {
-      max-width: 450px;
-      margin: 20px auto;
-      padding: 30px;
-      background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)),
-                  url('header-bg1.png') center/cover fixed;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      text-align: center;
-    }
+    button { background-color:#007bff; color:#fff; border:none; padding:10px 25px; border-radius:8px; cursor:pointer; font-weight:600; transition: background-color 0.3s ease, transform 0.3s ease; }
+    button:hover { background-color:#0056b3; transform: scale(1.05); }
 
-    h2 {
-      color: #007bff;
-      margin-bottom: 15px;
-      font-size: 1.6em;
-      font-weight: 700;
-    }
+    /* Tabs */
+    .tabBtn { background-color:#007bff; color:white; border:none; padding:10px 20px; margin:0 5px; border-radius:6px; cursor:pointer; font-weight:600; transition: background-color 0.3s ease; }
+    .tabBtn:hover { background-color:#0056b3; }
+    .tabContent { animation: fadeInUp 0.8s ease-in-out; margin-top:20px; }
 
-    p {
-      color: #555;
-      font-size: 1em;
-      margin-bottom: 10px;
-    }
+    /* Gallery */
+    #galleryGrid { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; padding:20px; }
+    #galleryGrid img, #galleryGrid iframe { width:250px; height:180px; object-fit:cover; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.2); transition: transform 0.3s ease; }
+    #galleryGrid img:hover, #galleryGrid iframe:hover { transform: scale(1.05); }
 
-    input[type="password"], input[type="file"] {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 1em;
-    }
-
-    button {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      padding: 10px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-      transform: scale(1.05);
-    }
-
-    #uploadSection { display: none; }
-
-    #galleryGrid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      padding: 20px;
-    }
-
-    #galleryGrid img, #galleryGrid iframe {
-      width: 250px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
-    }
-
-    #galleryGrid img:hover, #galleryGrid iframe:hover {
-      transform: scale(1.05);
-    }
+    /* Member Table */
+    #memberTable { width:100%; margin-top:20px; border-collapse:collapse; display:block; max-height:400px; overflow-y:auto; }
+    #memberTable thead { position: sticky; top:0; }
+    #memberTable th, #memberTable td { border:1px solid #ccc; padding:8px; text-align:left; }
+    #memberTable th { background:#007bff; color:white; }
 
     /* FOOTER */
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 18px 0;
-      font-size: 0.9em;
-      margin-top: 40px;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
-    }
+    footer { background:#111; color:white; text-align:center; padding:18px 0; font-size:0.9em; margin-top:40px; box-shadow:0 -2px 10px rgba(0,0,0,0.3); }
 
     /* ANIMATIONS */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    @keyframes fadeInDown { from { opacity:0; transform:translateY(-30px);} to { opacity:1; transform:translateY(0);} }
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(30px);} to { opacity:1; transform:translateY(0);} }
+    @keyframes fadeIn { from { opacity:0;} to { opacity:1;} }
 
     @media (max-width: 600px) {
-      header { padding: 40px 10px; }
-      .header-center h1 { font-size: 1.5em; }
-      .login-container, .upload-container { width: 90%; padding: 25px 15px; }
+      header { padding:40px 10px; }
+      .header-center h1 { font-size:1.5em; }
+      .login-container, .upload-container { width:90%; padding:25px 15px; }
+      #galleryGrid img, #galleryGrid iframe { width:100%; height:auto; }
+      #memberTable { display:block; overflow-x:auto; }
     }
   </style>
 </head>
@@ -227,17 +103,47 @@
   </div>
 </section>
 
-<!-- UPLOAD SECTION -->
-<section id="uploadSection">
-  <div class="upload-container">
-    <h2>Media Upload</h2>
-    <input type="file" id="fileInput" accept="image/*,video/*">
-    <button onclick="uploadFile()">Upload</button>
-    <p id="uploadStatus"></p>
+<!-- UPLOAD + MEMBER LIST SECTION -->
+<section id="uploadSection" style="display:none;">
+  <div style="text-align:right; margin-bottom:10px;">
+    <button onclick="logoutMember()" style="background:#dc3545;">Logout</button>
   </div>
 
-  <h2>Uploaded Media</h2>
-  <div id="galleryGrid"></div>
+  <!-- Tabs -->
+  <div style="text-align:center; margin-bottom:20px;">
+    <button class="tabBtn" onclick="openTab('mediaTab')">Media Upload</button>
+    <button class="tabBtn" onclick="openTab('memberTab')">Member List</button>
+  </div>
+
+  <!-- Media Upload Tab -->
+  <div id="mediaTab" class="tabContent">
+    <div class="upload-container">
+      <h2>Media Upload</h2>
+      <input type="file" id="fileInput" accept="image/*,video/*">
+      <button onclick="uploadFile()">Upload</button>
+      <p id="uploadStatus"></p>
+    </div>
+
+    <h2>Uploaded Media</h2>
+    <div id="galleryGrid"></div>
+  </div>
+
+  <!-- Member List Tab -->
+  <div id="memberTab" class="tabContent" style="display:none;">
+    <h2>Registered Members</h2>
+    <p>Search members:</p>
+    <input type="text" id="memberSearch" placeholder="Search members..." onkeyup="filterMembers()">
+    <p>Or download complete list:</p>
+    <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQMXTRIOrP0xYcPWd0JoinzcQpxa2v8cjsF40l_QnTlcOchBelbWxX97t33osgrPoHjMMiE6ulMlGbM/pub?output=csv" target="_blank">
+      <button>Download CSV</button>
+    </a>
+    <div style="overflow-x:auto; max-height:400px; margin-top:10px;">
+      <table id="memberTable">
+        <thead><tr id="memberTableHeader"></tr></thead>
+        <tbody id="memberTableBody"></tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -250,6 +156,7 @@
 const apiURL = "https://script.google.com/macros/s/AKfycbzPB8slm1_rbqK0LRppD0wKCRe5_Gpu7WuZBhiBmSFaoFDqzW_xoK0ByI8lo7GPBxeSiQ/exec";
 const accessCode = "amola2025";
 
+// LOGIN
 function checkLogin() {
   const enteredCode = document.getElementById("accessCode").value.trim();
   const message = document.getElementById("loginMessage");
@@ -257,11 +164,29 @@ function checkLogin() {
     document.getElementById("loginSection").style.display = "none";
     document.getElementById("uploadSection").style.display = "block";
     loadGallery();
+    loadMembers();
+    openTab('mediaTab'); 
   } else {
     message.textContent = "Invalid code. Please try again.";
   }
 }
 
+// LOGOUT
+function logoutMember() {
+  document.getElementById("uploadSection").style.display = "none";
+  document.getElementById("loginSection").style.display = "block";
+  document.getElementById("accessCode").value = "";
+  document.getElementById("loginMessage").textContent = "";
+}
+
+// Tabs
+function openTab(tabId) {
+  const tabs = document.getElementsByClassName("tabContent");
+  for (let tab of tabs) tab.style.display = "none";
+  document.getElementById(tabId).style.display = "block";
+}
+
+// LOAD GALLERY
 function loadGallery() {
   fetch(apiURL)
     .then(res => res.json())
@@ -290,15 +215,13 @@ function loadGallery() {
     .catch(err => console.error("Error loading gallery:", err));
 }
 
+// UPLOAD FILE
 function uploadFile() {
   const fileInput = document.getElementById("fileInput");
   const file = fileInput.files[0];
   const status = document.getElementById("uploadStatus");
 
-  if (!file) {
-    status.textContent = "Please select a file to upload.";
-    return;
-  }
+  if (!file) { status.textContent = "Please select a file to upload."; return; }
 
   const reader = new FileReader();
   reader.onload = function(event) {
@@ -308,29 +231,67 @@ function uploadFile() {
     status.textContent = "Uploading... Please wait.";
 
     fetch(apiURL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
       body: JSON.stringify(payload)
     })
-    .then(res => res.json())
-    .then(result => {
-      if (result.success) {
-        status.style.color = "green";
-        status.textContent = "✅ Upload successful!";
-        fileInput.value = "";
+    .then(res=>res.json())
+    .then(result=>{
+      if(result.success){
+        status.style.color="green";
+        status.textContent="✅ Upload successful!";
+        fileInput.value="";
         loadGallery();
       } else {
-        status.style.color = "red";
-        status.textContent = "Upload failed: " + result.error;
+        status.style.color="red";
+        status.textContent="Upload failed: "+result.error;
       }
     })
-    .catch(err => {
-      status.style.color = "red";
-      status.textContent = "Upload failed: " + err.message;
+    .catch(err=>{
+      status.style.color="red";
+      status.textContent="Upload failed: "+err.message;
     });
   };
-
   reader.readAsDataURL(file);
+}
+
+// LOAD MEMBERS LIVE TABLE
+function loadMembers() {
+  const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQMXTRIOrP0xYcPWd0JoinzcQpxa2v8cjsF40l_QnTlcOchBelbWxX97t33osgrPoHjMMiE6ulMlGbM/pub?output=csv";
+  fetch(csvUrl)
+    .then(res => res.text())
+    .then(data => {
+      const rows = data.split("\n").filter(r=>r.trim()!=="");
+      const headers = rows[0].split(",");
+      const tableHeader = document.getElementById("memberTableHeader");
+      tableHeader.innerHTML = "";
+      headers.forEach(h=>{ tableHeader.innerHTML += `<th>${h}</th>`; });
+
+      const tableBody = document.getElementById("memberTableBody");
+      tableBody.innerHTML = "";
+      for(let i=1;i<rows.length;i++){
+        const cells = rows[i].split(",");
+        const row = document.createElement("tr");
+        cells.forEach(c=>{ row.innerHTML += `<td>${c}</td>`; });
+        tableBody.appendChild(row);
+      }
+    })
+    .catch(err=>console.error("Error loading members:", err));
+}
+
+// FILTER MEMBERS
+function filterMembers() {
+  const filter = document.getElementById("memberSearch").value.toUpperCase();
+  const table = document.getElementById("memberTable");
+  const tr = table.getElementsByTagName("tr");
+  for(let i=1;i<tr.length;i++){
+    let tdArr = tr[i].getElementsByTagName("td");
+    let visible = false;
+    for(let td of tdArr){
+      if(td.textContent.toUpperCase().indexOf(filter)>-1){ visible = true; break; }
+    }
+    tr[i].style.display = visible?"":"none";
+  }
 }
 </script>
 
