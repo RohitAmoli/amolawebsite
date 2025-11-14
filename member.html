@@ -9,7 +9,6 @@
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body { background-color: #f8f9fa; color: #333; line-height: 1.6; text-align: center; }
 
-    /* HEADER */
     header {
       background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('header-bg1.png') center/cover no-repeat;
       color: white; padding: 60px 20px; text-align: center; animation: fadeInDown 1s ease-in-out;
@@ -19,12 +18,10 @@
     .header-center h1 { font-size:1.9em; font-weight:700; letter-spacing:1px; }
     .header-center p { font-size:1em; font-weight:300; }
 
-    /* NAVBAR */
     nav.navbar { background-color:#000; padding:10px 0; text-align:center; animation: fadeIn 1.2s ease-in-out; }
     nav.navbar a { color:white; text-decoration:none; margin:0 12px; font-weight:500; transition: color 0.3s, transform 0.3s; }
     nav.navbar a:hover { color:#00c6ff; transform: scale(1.1); text-shadow:0 0 10px #00c6ff; }
 
-    /* MEMBER SECTION */
     section { padding:50px 20px; animation: fadeInUp 1.2s ease-in-out; }
     .login-container, .upload-container { max-width:450px; margin:20px auto; padding:30px; background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('header-bg1.png') center/cover fixed; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); text-align:center; }
     h2 { color:#007bff; margin-bottom:15px; font-size:1.6em; font-weight:700; }
@@ -38,11 +35,6 @@
     .tabBtn:hover { background-color:#0056b3; }
 
     .tabContent { animation: fadeInUp 0.8s ease-in-out; margin-top:20px; }
-
-    #galleryGrid { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; padding:20px; }
-    #galleryGrid img { width:250px; height:180px; object-fit:cover; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.2); transition: transform 0.3s ease; }
-    #galleryGrid iframe { width:250px; height:180px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.2); transition: transform 0.3s ease; }
-    #galleryGrid img:hover, #galleryGrid iframe:hover { transform: scale(1.05); }
 
     #memberTable { width:100%; margin-top:20px; border-collapse:collapse; display:block; max-height:400px; overflow-y:auto; }
     #memberTable thead { position: sticky; top:0; }
@@ -106,8 +98,6 @@
       <button onclick="uploadFile()">Upload</button>
       <p id="uploadStatus"></p>
     </div>
-    <h2>Uploaded Media</h2>
-    <div id="galleryGrid"></div>
   </div>
 
   <div id="memberTab" class="tabContent" style="display:none;">
@@ -135,7 +125,7 @@
 </footer>
 
 <script>
-const apiURL = "https://script.google.com/macros/s/AKfycbzyvSqvYjDkGPapWgsXmT6hNnpj30w6slUf3Q4qyuapf5VS4cxeCBvT-xz0-0LlrpoQsg/exec"; // Replace with your Web App URL
+const apiURL = "https://script.google.com/macros/s/AKfycbzyvSqvYjDkGPapWgsXmT6hNnpj30w6slUf3Q4qyuapf5VS4cxeCBvT-xz0-0LlrpoQsg/exec"; 
 const accessCode = "amola2025";
 
 // LOGIN
@@ -146,7 +136,6 @@ function checkLogin() {
   if (enteredCode === accessCode) {
     document.getElementById("loginSection").style.display = "none";
     document.getElementById("uploadSection").style.display = "block";
-    loadGallery();
     loadMembers();
     openTab('mediaTab'); 
   } else {
@@ -166,39 +155,6 @@ function openTab(tabId) {
   const tabs = document.getElementsByClassName("tabContent");
   for (let tab of tabs) tab.style.display = "none";
   document.getElementById(tabId).style.display = "block";
-}
-
-// MEDIA GALLERY (FIXED VIDEO LINKS)
-function loadGallery() {
-  fetch(apiURL)
-    .then(res => res.json())
-    .then(data => {
-      const grid = document.getElementById("galleryGrid");
-      grid.innerHTML = "";
-      data.forEach(file => {
-        const wrapper = document.createElement("div");
-
-        if (file.type === "image") {
-          const img = document.createElement("img");
-          img.src = `https://drive.google.com/uc?export=view&id=${file.id}`;
-          img.alt = file.name;
-          wrapper.appendChild(img);
-
-        } else if (file.type === "video") {
-          const iframe = document.createElement("iframe");
-          iframe.src = `https://drive.google.com/file/d/${file.id}/preview`;
-          iframe.width = "250";
-          iframe.height = "180";
-          iframe.allow = "autoplay";
-          iframe.frameBorder = "0";
-          iframe.style.borderRadius = "10px";
-          wrapper.appendChild(iframe);
-        }
-
-        grid.appendChild(wrapper);
-      });
-    })
-    .catch(err => console.error("Error loading gallery:", err));
 }
 
 // UPLOAD FILE
@@ -226,27 +182,23 @@ function uploadFile() {
     status.textContent = "Uploading...";
     status.style.color = "blue";
 
-    fetch(apiURL, {
-      method: "POST",
-      body: formData
-    })
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        status.textContent = "Upload successful!";
-        status.style.color = "green";
-        fileInput.value = "";
-        loadGallery();
-      } else {
-        status.textContent = "Upload failed: " + (data.message || "Unknown error");
+    fetch(apiURL, { method: "POST", body: formData })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          status.textContent = "Upload successful!";
+          status.style.color = "green";
+          fileInput.value = "";
+        } else {
+          status.textContent = "Upload failed: " + (data.message || "Unknown error");
+          status.style.color = "red";
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        status.textContent = "Error uploading file.";
         status.style.color = "red";
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      status.textContent = "Error uploading file.";
-      status.style.color = "red";
-    });
+      });
   };
 
   reader.readAsDataURL(file);
