@@ -106,7 +106,7 @@
     };
 
     /* ------------------------------------------
-      LOAD MEMBERS (Hide Column 1 Only + Serial No)
+      LOAD MEMBERS (Hide Column 1 Only + Skip Empty Rows)
     --------------------------------------------- */
     function loadMembers() {
       const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQMXTRIOrP0xYcPWd0JoinzcQpxa2v8cjsF40l_QnTlcOchBelbWxX97t33osgrPoHjMMiE6ulMlGbM/pub?output=csv";
@@ -138,16 +138,18 @@
           for (let i = 1; i < rows.length; i++) {
             let cells = rows[i].split(",");
 
-            if (cells.length < 2 || cells[1].trim() === "") continue;
+            // Skip if row is empty after removing column 1
+            const dataCells = cells.slice(1);
+            const isEmpty = dataCells.every(c => c.trim() === "");
 
-            cells = cells.slice(1); // remove ONLY column 1
+            if (isEmpty) continue; // SKIP EMPTY ROW
 
             const row = document.createElement("tr");
 
             row.innerHTML += `<td>${serial}</td>`;
             serial++;
 
-            cells.forEach(c => {
+            dataCells.forEach(c => {
               row.innerHTML += `<td>${c}</td>`;
             });
 
