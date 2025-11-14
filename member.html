@@ -61,7 +61,7 @@
     @media (max-width: 600px) {
       header { padding:40px 10px; }
       .header-center h1 { font-size:1.5em; }
-      .login-container, .upload-container { width:90%; padding:25px 15px; }
+      .login-container, .upload-container { width:90%; padding:25px; }
       #galleryGrid img, #galleryGrid iframe { width:100%; height:auto; }
       #memberTable { display:block; overflow-x:auto; }
     }
@@ -151,9 +151,11 @@
 </footer>
 
 <script>
+
 const apiURL = "https://script.google.com/macros/s/AKfycbzPB8slm1_rbqK0LRppD0wKCRe5_Gpu7WuZBhiBmSFaoFDqzW_xoK0ByI8lo7GPBxeSiQ/exec";
 const accessCode = "mission2026";
 
+/* LOGIN */
 function checkLogin() {
   const enteredCode = document.getElementById("accessCode").value.trim();
   const message = document.getElementById("loginMessage");
@@ -176,12 +178,14 @@ function logoutMember() {
   document.getElementById("loginMessage").textContent = "";
 }
 
+/* TABS */
 function openTab(tabId) {
   const tabs = document.getElementsByClassName("tabContent");
   for (let tab of tabs) tab.style.display = "none";
   document.getElementById(tabId).style.display = "block";
 }
 
+/* LOAD GALLERY */
 function loadGallery() {
   fetch(apiURL)
     .then(res => res.json())
@@ -213,56 +217,8 @@ function loadGallery() {
     .catch(err => console.error("Error loading gallery:", err));
 }
 
-function uploadFile() {
-  const fileInput = document.getElementById("fileInput");
-  const file = fileInput.files[0];
-  const status = document.getElementById("uploadStatus");
-
-  if (!file) { 
-    status.textContent = "Please select a file to upload."; 
-    return; 
-  }
-
-  const reader = new FileReader();
-  reader.onload = function(event) {
-    const base64Data = event.target.result.split(",")[1];
-
-    const payload = {
-      filename: file.name,
-      mimeType: file.type,
-      file: base64Data
-    };
-
-    status.textContent = "Uploading... Please wait.";
-
-    fetch(apiURL, {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body: JSON.stringify(payload)
-    })
-    .then(res => res.json())
-    .then(result => {
-      if(result.success){
-        status.style.color = "green";
-        status.textContent = "✅ Upload successful!";
-        fileInput.value = "";
-        loadGallery();
-      } else {
-        status.style.color = "red";
-        status.textContent = "Upload failed: " + result.error;
-      }
-    })
-    .catch(err => {
-      status.style.color = "red";
-      status.textContent = "Upload failed: " + err.message;
-    });
-  };
-
-  reader.readAsDataURL(file);
-}
-
 /* -------------------------
-   LOAD MEMBERS WITH COLUMNS HIDING
+   LOAD MEMBERS WITH SERIAL NUMBER
 ---------------------------- */
 
 function loadMembers() {
@@ -275,10 +231,15 @@ function loadMembers() {
       const rows = data.split("\n").filter(r => r.trim() !== "");
 
       let headers = rows[0].split(",");
-      headers = headers.slice(1);   // ❗ HIDE COLUMN 1 + COLUMN 2
+
+      headers = headers.slice(2);   // HIDE COLUMN 1 & 2
 
       const tableHeader = document.getElementById("memberTableHeader");
       tableHeader.innerHTML = "";
+
+      // ADD SERIAL NUMBER
+      tableHeader.innerHTML += "<th>S.No</th>";
+
       headers.forEach(h => {
         tableHeader.innerHTML += `<th>${h}</th>`;
       });
@@ -286,20 +247,26 @@ function loadMembers() {
       const tableBody = document.getElementById("memberTableBody");
       tableBody.innerHTML = "";
 
+      let serial = 1;
+
       for (let i = 1; i < rows.length; i++) {
         let cells = rows[i].split(",");
-        cells = cells.slice(2); // ❗ remove first 2 columns
+        cells = cells.slice(1); // remove first 2 columns
 
         const row = document.createElement("tr");
+
+        row.innerHTML += `<td>${serial}</td>`;
+        serial++;
+
         cells.forEach(c => {
           row.innerHTML += `<td>${c}</td>`;
         });
+
         tableBody.appendChild(row);
       }
     })
     .catch(err => console.error("Error loading members:", err));
 }
-
 
 /* SEARCH FILTER */
 function filterMembers() {
@@ -321,8 +288,8 @@ function filterMembers() {
     tr[i].style.display = visible ? "" : "none";
   }
 }
+
 </script>
 
 </body>
 </html>
-
