@@ -109,7 +109,6 @@
     <button onclick="logoutMember()" style="background:#dc3545;">Logout</button>
   </div>
 
-  <!-- Tabs -->
   <div style="text-align:center; margin-bottom:20px;">
     <button class="tabBtn" onclick="openTab('mediaTab')">Media Upload</button>
     <button class="tabBtn" onclick="openTab('memberTab')">Member List</button>
@@ -123,7 +122,6 @@
       <button onclick="uploadFile()">Upload</button>
       <p id="uploadStatus"></p>
     </div>
-
     <h2>Uploaded Media</h2>
     <div id="galleryGrid"></div>
   </div>
@@ -156,10 +154,10 @@
 const apiURL = "https://script.google.com/macros/s/AKfycbzPB8slm1_rbqK0LRppD0wKCRe5_Gpu7WuZBhiBmSFaoFDqzW_xoK0ByI8lo7GPBxeSiQ/exec";
 const accessCode = "mission2026";
 
-// LOGIN
 function checkLogin() {
   const enteredCode = document.getElementById("accessCode").value.trim();
   const message = document.getElementById("loginMessage");
+
   if (enteredCode === accessCode) {
     document.getElementById("loginSection").style.display = "none";
     document.getElementById("uploadSection").style.display = "block";
@@ -171,7 +169,6 @@ function checkLogin() {
   }
 }
 
-// LOGOUT
 function logoutMember() {
   document.getElementById("uploadSection").style.display = "none";
   document.getElementById("loginSection").style.display = "block";
@@ -179,14 +176,12 @@ function logoutMember() {
   document.getElementById("loginMessage").textContent = "";
 }
 
-// Tabs
 function openTab(tabId) {
   const tabs = document.getElementsByClassName("tabContent");
   for (let tab of tabs) tab.style.display = "none";
   document.getElementById(tabId).style.display = "block";
 }
 
-// LOAD GALLERY
 function loadGallery() {
   fetch(apiURL)
     .then(res => res.json())
@@ -195,11 +190,13 @@ function loadGallery() {
       grid.innerHTML = "";
       data.forEach(file => {
         const wrapper = document.createElement("div");
+
         if (file.type === "image") {
           const img = document.createElement("img");
           img.src = `https://lh3.googleusercontent.com/d/${file.id}=w800`;
           img.alt = file.name;
           wrapper.appendChild(img);
+
         } else if (file.type === "video") {
           const iframe = document.createElement("iframe");
           iframe.src = `https://drive.google.com/file/d/${file.id}/preview`;
@@ -209,24 +206,32 @@ function loadGallery() {
           iframe.frameBorder = "0";
           wrapper.appendChild(iframe);
         }
+
         grid.appendChild(wrapper);
       });
     })
     .catch(err => console.error("Error loading gallery:", err));
 }
 
-// UPLOAD FILE
 function uploadFile() {
   const fileInput = document.getElementById("fileInput");
   const file = fileInput.files[0];
   const status = document.getElementById("uploadStatus");
 
-  if (!file) { status.textContent = "Please select a file to upload."; return; }
+  if (!file) { 
+    status.textContent = "Please select a file to upload."; 
+    return; 
+  }
 
   const reader = new FileReader();
   reader.onload = function(event) {
     const base64Data = event.target.result.split(",")[1];
-    const payload = { filename: file.name, mimeType: file.type, file: base64Data };
+
+    const payload = {
+      filename: file.name,
+      mimeType: file.type,
+      file: base64Data
+    };
 
     status.textContent = "Uploading... Please wait.";
 
@@ -235,67 +240,88 @@ function uploadFile() {
       headers:{"Content-Type":"application/json"},
       body: JSON.stringify(payload)
     })
-    .then(res=>res.json())
-    .then(result=>{
+    .then(res => res.json())
+    .then(result => {
       if(result.success){
-        status.style.color="green";
-        status.textContent="✅ Upload successful!";
-        fileInput.value="";
+        status.style.color = "green";
+        status.textContent = "✅ Upload successful!";
+        fileInput.value = "";
         loadGallery();
       } else {
-        status.style.color="red";
-        status.textContent="Upload failed: "+result.error;
+        status.style.color = "red";
+        status.textContent = "Upload failed: " + result.error;
       }
     })
-    .catch(err=>{
-      status.style.color="red";
-      status.textContent="Upload failed: "+err.message;
+    .catch(err => {
+      status.style.color = "red";
+      status.textContent = "Upload failed: " + err.message;
     });
   };
+
   reader.readAsDataURL(file);
 }
 
-// LOAD MEMBERS LIVE TABLE
+/* -------------------------
+   LOAD MEMBERS WITH COLUMNS HIDING
+---------------------------- */
+
 function loadMembers() {
   const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQMXTRIOrP0xYcPWd0JoinzcQpxa2v8cjsF40l_QnTlcOchBelbWxX97t33osgrPoHjMMiE6ulMlGbM/pub?output=csv";
+
   fetch(csvUrl)
     .then(res => res.text())
     .then(data => {
-      const rows = data.split("\n").filter(r=>r.trim()!=="");
-      const headers = rows[0].split(",");
+
+      const rows = data.split("\n").filter(r => r.trim() !== "");
+
+      let headers = rows[0].split(",");
+      headers = headers.slice(2);   // ❗ HIDE COLUMN 1 + COLUMN 2
+
       const tableHeader = document.getElementById("memberTableHeader");
       tableHeader.innerHTML = "";
-      headers.forEach(h=>{ tableHeader.innerHTML += `<th>${h}</th>`; });
+      headers.forEach(h => {
+        tableHeader.innerHTML += `<th>${h}</th>`;
+      });
 
       const tableBody = document.getElementById("memberTableBody");
       tableBody.innerHTML = "";
-      for(let i=1;i<rows.length;i++){
-        const cells = rows[i].split(",");
+
+      for (let i = 1; i < rows.length; i++) {
+        let cells = rows[i].split(",");
+        cells = cells.slice(2); // ❗ remove first 2 columns
+
         const row = document.createElement("tr");
-        cells.forEach(c=>{ row.innerHTML += `<td>${c}</td>`; });
+        cells.forEach(c => {
+          row.innerHTML += `<td>${c}</td>`;
+        });
         tableBody.appendChild(row);
       }
     })
-    .catch(err=>console.error("Error loading members:", err));
+    .catch(err => console.error("Error loading members:", err));
 }
 
-// FILTER MEMBERS
+
+/* SEARCH FILTER */
 function filterMembers() {
   const filter = document.getElementById("memberSearch").value.toUpperCase();
   const table = document.getElementById("memberTable");
   const tr = table.getElementsByTagName("tr");
-  for(let i=1;i<tr.length;i++){
+
+  for(let i = 1; i < tr.length; i++){
     let tdArr = tr[i].getElementsByTagName("td");
     let visible = false;
+
     for(let td of tdArr){
-      if(td.textContent.toUpperCase().indexOf(filter)>-1){ visible = true; break; }
+      if(td.textContent.toUpperCase().indexOf(filter) > -1){
+        visible = true;
+        break;
+      }
     }
-    tr[i].style.display = visible?"":"none";
+
+    tr[i].style.display = visible ? "" : "none";
   }
 }
 </script>
 
 </body>
 </html>
-
-
