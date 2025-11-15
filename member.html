@@ -186,16 +186,19 @@ function loadMedia() {
         div.style.border="1px solid #ccc"; div.style.padding="10px"; div.style.textAlign="center"; div.style.width="200px";
 
         if(file.type.startsWith("image/")) {
-          const img = document.createElement("img");
-          img.src = `https://lh3.googleusercontent.com/d/${file.id}=w800`;
-          img.alt = file.name;
-          div.appendChild(img);
-        } else if(file.type.startsWith("video/")) {
-          const video = document.createElement("video");
-          video.src = `https://drive.google.com/file/d/${file.id}/preview`;
-          video.controls = true;
-          div.appendChild(video);
-        }
+  const img = document.createElement("img");
+  img.src = `https://lh3.googleusercontent.com/d/${file.id}=w800`;
+  img.alt = file.name;
+  div.appendChild(img);
+} else if(file.type.startsWith("video/")) {
+  const iframe = document.createElement("iframe");
+  iframe.src = `https://drive.google.com/file/d/${file.id}/preview`;
+  iframe.allow = "autoplay; encrypted-media";
+  iframe.frameBorder = "0";
+  iframe.width = "100%";
+  iframe.height = "150px";
+  div.appendChild(iframe);
+}
 
         const btn=document.createElement("button");
         btn.textContent="Delete"; btn.style.background="#dc3545"; btn.style.color="white"; btn.style.border="none"; btn.style.padding="5px 10px"; btn.style.cursor="pointer";
