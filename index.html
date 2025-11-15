@@ -238,12 +238,38 @@
 </section>
 
 <!-- FOOTER -->
-<footer>
-  © 2025 Amola Yuva Shakti Mandal Samiti | All Rights Reserved<br>
-  Designed & Managed by Rohit Amoli
+<!-- FOOTER -->
+<footer style="position:relative; padding:20px 0; background:#111; color:white; font-size:0.9em; text-align:center;">
+  <!-- Footer text centered -->
+  <div>
+    © 2025 Amola Yuva Shakti Mandal Samiti | All Rights Reserved<br>
+    Designed & Managed by Rohit Amoli
+  </div>
+
+  <!-- Visitor counter on the right -->
+  <div id="visitorCounter" style="position:absolute; top:50%; right:20px; transform:translateY(-50%); background:#e0f0ff; color:#007bff; font-weight:600; font-size:0.85em; padding:5px 12px; border-radius:10px; display:inline-flex; align-items:center; gap:5px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+    <span>👥 Visitors:</span>
+    <span id="visitorNumber">0</span>
+  </div>
+
 </footer>
+
+    <script>// Visitor counter (per browser)
+function updateVisitorCount() {
+  let count = localStorage.getItem("visitorCount");
+  if(!count) count = 1;
+  else count = parseInt(count) + 1;
+  localStorage.setItem("visitorCount", count);
+  document.getElementById("visitorNumber").textContent = count;
+}
+updateVisitorCount();
+    </script>
+
+
+
 
 </body>
 </html>
+
 
 
