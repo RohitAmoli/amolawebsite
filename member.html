@@ -8,41 +8,32 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body { background-color: #f8f9fa; color: #333; line-height: 1.6; text-align: center; }
-
-    header {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('header-bg1.png') center/cover no-repeat;
-      color: white; padding: 60px 20px; text-align: center; animation: fadeInDown 1s ease-in-out;
-    }
+    header { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('header-bg1.png') center/cover no-repeat; color: white; padding: 60px 20px; text-align: center; animation: fadeInDown 1s ease-in-out; }
     .header-center { display:flex; flex-direction: column; align-items:center; gap:10px; }
     .header-center img { width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid white; box-shadow:0 0 15px rgba(255,255,255,0.3); }
     .header-center h1 { font-size:1.9em; font-weight:700; letter-spacing:1px; }
     .header-center p { font-size:1em; font-weight:300; }
-
     nav.navbar { background-color:#000; padding:10px 0; text-align:center; animation: fadeIn 1.2s ease-in-out; }
     nav.navbar a { color:white; text-decoration:none; margin:0 12px; font-weight:500; transition: color 0.3s, transform 0.3s; }
     nav.navbar a:hover { color:#00c6ff; transform: scale(1.1); text-shadow:0 0 10px #00c6ff; }
-
     section { padding:50px 20px; animation: fadeInUp 1.2s ease-in-out; }
     .login-container, .upload-container { max-width:450px; margin:20px auto; padding:30px; background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('header-bg1.png') center/cover fixed; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); text-align:center; }
     h2 { color:#007bff; margin-bottom:15px; font-size:1.6em; font-weight:700; }
     p { color:#555; font-size:1em; margin-bottom:10px; }
     input[type="password"], input[type="file"], input[type="text"] { width:90%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; font-size:1em; }
-
     button { background-color:#007bff; color:#fff; border:none; padding:10px 25px; border-radius:8px; cursor:pointer; font-weight:600; transition: background-color 0.3s ease, transform 0.3s ease; }
     button:hover { background-color:#0056b3; transform: scale(1.05); }
-
     .tabBtn { background-color:#007bff; color:white; border:none; padding:10px 20px; margin:0 5px; border-radius:6px; cursor:pointer; font-weight:600; transition: background-color 0.3s ease; }
     .tabBtn:hover { background-color:#0056b3; }
-
     .tabContent { animation: fadeInUp 0.8s ease-in-out; margin-top:20px; }
-
     #memberTable { width:100%; margin-top:20px; border-collapse:collapse; display:block; max-height:400px; overflow-y:auto; }
     #memberTable thead { position: sticky; top:0; }
     #memberTable th, #memberTable td { border:1px solid #ccc; padding:8px; text-align:left; }
     #memberTable th { background:#007bff; color:white; }
-
+    .gallery { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; margin-top:20px; }
+    .gallery div { border:1px solid #ccc; padding:10px; text-align:center; width:200px; }
+    .gallery img, .gallery video { max-width:100%; max-height:150px; display:block; margin-bottom:5px; }
     footer { background:#111; color:white; text-align:center; padding:18px 0; font-size:0.9em; margin-top:40px; box-shadow:0 -2px 10px rgba(0,0,0,0.3); }
-
     @keyframes fadeInDown { from { opacity:0; transform:translateY(-30px);} to { opacity:1; transform:translateY(0);} }
     @keyframes fadeInUp { from { opacity:0; transform:translateY(30px);} to { opacity:1; transform:translateY(0);} }
     @keyframes fadeIn { from { opacity:0;} to { opacity:1;} }
@@ -91,6 +82,7 @@
     <button class="tabBtn" onclick="openTab('memberTab')">Member List</button>
   </div>
 
+  <!-- MEDIA UPLOAD TAB -->
   <div id="mediaTab" class="tabContent">
     <div class="upload-container">
       <h2>Media Upload</h2>
@@ -98,18 +90,18 @@
       <button onclick="uploadFile()">Upload</button>
       <p id="uploadStatus"></p>
     </div>
+    <div id="mediaGallery" class="gallery"></div>
   </div>
 
+  <!-- MEMBER LIST TAB -->
   <div id="memberTab" class="tabContent" style="display:none;">
     <h2>Registered Members</h2>
     <p>Search members:</p>
     <input type="text" id="memberSearch" placeholder="Search members..." onkeyup="filterMembers()">
     <p>Or download complete list:</p>
-
     <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQMXTRIOrP0xYcPWd0JoinzcQpxa2v8cjsF40l_QnTlcOchBelbWxX97t33osgrPoHjMMiE6ulMlGbM/pub?output=csv" target="_blank">
       <button>Download CSV</button>
     </a>
-
     <div style="overflow-x:auto; max-height:400px; margin-top:10px;">
       <table id="memberTable">
         <thead><tr id="memberTableHeader"></tr></thead>
@@ -125,22 +117,20 @@
 </footer>
 
 <script>
-const apiURL = "https://script.google.com/macros/s/AKfycbzyvSqvYjDkGPapWgsXmT6hNnpj30w6slUf3Q4qyuapf5VS4cxeCBvT-xz0-0LlrpoQsg/exec"; 
+const apiURL = "https://script.google.com/macros/s/AKfycbxG-cxMow1x7R1r_UShOQI6cUtJXCM7ClnKGYXoaYXizjZyiLfEHi825rfcnwaIbOCHww/exec"; 
 const accessCode = "mission@2026";
 
 // LOGIN
 function checkLogin() {
   const enteredCode = document.getElementById("accessCode").value.trim();
   const message = document.getElementById("loginMessage");
-
   if (enteredCode === accessCode) {
     document.getElementById("loginSection").style.display = "none";
     document.getElementById("uploadSection").style.display = "block";
     loadMembers();
-    openTab('mediaTab'); 
-  } else {
-    message.textContent = "Invalid code. Please try again.";
-  }
+    openTab('mediaTab');
+    loadMedia();
+  } else message.textContent = "Invalid code. Please try again.";
 }
 
 function logoutMember() {
@@ -161,100 +151,103 @@ function openTab(tabId) {
 function uploadFile() {
   const fileInput = document.getElementById("fileInput");
   const status = document.getElementById("uploadStatus");
-
-  if (fileInput.files.length === 0) {
-    status.textContent = "Please select a file.";
-    status.style.color = "red";
-    return;
-  }
+  if(fileInput.files.length === 0){ status.textContent = "Please select a file."; status.style.color = "red"; return; }
 
   const file = fileInput.files[0];
   const reader = new FileReader();
-
-  reader.onload = function(e) {
+  reader.onload = function(e){
     const base64Data = e.target.result.split(",")[1];
-
     const formData = new URLSearchParams();
     formData.append("fileName", file.name);
     formData.append("fileData", base64Data);
     formData.append("mimeType", file.type);
 
-    status.textContent = "Uploading...";
-    status.style.color = "blue";
-
-    fetch(apiURL, { method: "POST", body: formData })
+    status.textContent = "Uploading..."; status.style.color = "blue";
+    fetch(apiURL, { method:"POST", body: formData })
       .then(res => res.json())
       .then(data => {
-        if (data.success) {
-          status.textContent = "Upload successful!";
-          status.style.color = "green";
-          fileInput.value = "";
-        } else {
-          status.textContent = "Upload failed: " + (data.message || "Unknown error");
-          status.style.color = "red";
-        }
+        if(data.success){ status.textContent="Upload successful!"; status.style.color="green"; fileInput.value=""; loadMedia(); }
+        else { status.textContent="Upload failed: "+(data.message||"Unknown error"); status.style.color="red"; }
       })
-      .catch(err => {
-        console.error(err);
-        status.textContent = "Error uploading file.";
-        status.style.color = "red";
-      });
+      .catch(err => { console.error(err); status.textContent="Error uploading file."; status.style.color="red"; });
   };
-
   reader.readAsDataURL(file);
+}
+
+// LOAD MEDIA (Updated to fix image/video corruption)
+function loadMedia() {
+  fetch(apiURL + "?action=getFiles")
+    .then(res=>res.json())
+    .then(files=>{
+      const gallery = document.getElementById("mediaGallery");
+      gallery.innerHTML = "";
+      files.forEach(file=>{
+        const div = document.createElement("div");
+        div.style.border="1px solid #ccc"; div.style.padding="10px"; div.style.textAlign="center"; div.style.width="200px";
+
+        if(file.type.startsWith("image/")) {
+          const img = document.createElement("img");
+          img.src = `https://lh3.googleusercontent.com/d/${file.id}=w800`;
+          img.alt = file.name;
+          div.appendChild(img);
+        } else if(file.type.startsWith("video/")) {
+          const video = document.createElement("video");
+          video.src = `https://drive.google.com/file/d/${file.id}/preview`;
+          video.controls = true;
+          div.appendChild(video);
+        }
+
+        const btn=document.createElement("button");
+        btn.textContent="Delete"; btn.style.background="#dc3545"; btn.style.color="white"; btn.style.border="none"; btn.style.padding="5px 10px"; btn.style.cursor="pointer";
+        btn.onclick=()=>deleteMedia(file.id);
+        div.appendChild(btn); gallery.appendChild(div);
+      });
+    }).catch(err=>console.error("Error loading media:", err));
+}
+
+// DELETE MEDIA
+function deleteMedia(fileId) {
+  if(confirm("Are you sure you want to delete this file?")){
+    fetch(apiURL + "?action=deleteFile&fileId="+fileId, { method:"POST" })
+      .then(res=>res.json())
+      .then(data=>{
+        if(data.success) loadMedia();
+        else alert("Failed to delete file: "+(data.message||"Unknown error"));
+      }).catch(err=>console.error(err));
+  }
 }
 
 // LOAD MEMBERS
 function loadMembers() {
-  const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQMXTRIOrP0xYcPWd0JoinzcQpxa2v8cjsF40l_QnTlcOchBelbWxX97t33osgrPoHjMMiE6ulMlGbM/pub?output=csv";
-
-  fetch(csvUrl)
-    .then(res => res.text())
-    .then(data => {
-      const rows = data.split("\n").filter(r => r.trim() !== "");
-      let headers = rows[0].split(",").slice(1);
-
-      const tableHeader = document.getElementById("memberTableHeader");
-      tableHeader.innerHTML = "<th>S.No</th>";
-      headers.forEach(h => { tableHeader.innerHTML += `<th>${h}</th>`; });
-
-      const tableBody = document.getElementById("memberTableBody");
-      tableBody.innerHTML = "";
-      let serial = 1;
-
-      for (let i = 1; i < rows.length; i++) {
-        let cells = rows[i].split(",").slice(1);
-        if (cells.every(c => c.trim() === "")) continue;
-
-        const row = document.createElement("tr");
-        row.innerHTML += `<td>${serial}</td>`; serial++;
-        cells.forEach(c => { row.innerHTML += `<td>${c}</td>`; });
-        tableBody.appendChild(row);
-      }
-    })
-    .catch(err => console.error("Error loading members:", err));
+  const csvUrl="https://docs.google.com/spreadsheets/d/e/2PACX-1vQMXTRIOrP0xYcPWd0JoinzcQpxa2v8cjsF40l_QnTlcOchBelbWxX97t33osgrPoHjMMiE6ulMlGbM/pub?output=csv";
+  fetch(csvUrl).then(res=>res.text()).then(data=>{
+    const rows=data.split("\n").filter(r=>r.trim()!=="");
+    let headers=rows[0].split(",").slice(1);
+    const tableHeader=document.getElementById("memberTableHeader");
+    tableHeader.innerHTML="<th>S.No</th>"; headers.forEach(h=>{ tableHeader.innerHTML+=`<th>${h}</th>`; });
+    const tableBody=document.getElementById("memberTableBody"); tableBody.innerHTML=""; let serial=1;
+    for(let i=1;i<rows.length;i++){
+      let cells=rows[i].split(",").slice(1);
+      if(cells.every(c=>c.trim()==="")) continue;
+      const row=document.createElement("tr"); row.innerHTML+=`<td>${serial}</td>`; serial++;
+      cells.forEach(c=>{ row.innerHTML+=`<td>${c}</td>`; });
+      tableBody.appendChild(row);
+    }
+  }).catch(err=>console.error("Error loading members:", err));
 }
 
 // FILTER MEMBERS
 function filterMembers() {
-  const filter = document.getElementById("memberSearch").value.toUpperCase();
-  const table = document.getElementById("memberTable");
-  const tr = table.getElementsByTagName("tr");
-
-  for(let i = 1; i < tr.length; i++){
-    let tdArr = tr[i].getElementsByTagName("td");
-    let visible = false;
-    for(let td of tdArr){
-      if(td.textContent.toUpperCase().indexOf(filter) > -1){
-        visible = true;
-        break;
-      }
-    }
-    tr[i].style.display = visible ? "" : "none";
+  const filter=document.getElementById("memberSearch").value.toUpperCase();
+  const table=document.getElementById("memberTable");
+  const tr=table.getElementsByTagName("tr");
+  for(let i=1;i<tr.length;i++){
+    let tdArr=tr[i].getElementsByTagName("td"); let visible=false;
+    for(let td of tdArr){ if(td.textContent.toUpperCase().indexOf(filter)>-1){ visible=true; break; } }
+    tr[i].style.display=visible ? "" : "none";
   }
 }
 </script>
 
 </body>
 </html>
-
