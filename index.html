@@ -239,37 +239,42 @@
 
 <!-- FOOTER -->
 <!-- FOOTER -->
-<footer>
-  <div style="max-width:1100px; margin:0 auto; padding:15px 20px; display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:15px;">
+<!-- FOOTER -->
+<footer style="background: linear-gradient(90deg, #111, #222); color:white; padding:20px 10px; text-align:center; font-size:0.95em; line-height:1.6; box-shadow:0 -2px 10px rgba(0,0,0,0.3);">
+  
+  <div style="max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px;">
     
     <!-- Footer Text -->
-    <div style="color:white; font-size:0.9em; text-align:center;">
+    <div style="text-align:center; flex:1; min-width:200px;">
       © 2025 Amola Yuva Shakti Mandal Samiti | All Rights Reserved<br>
       Designed & Managed by <b>Rohit Amoli</b>
     </div>
     
     <!-- Visitor Counter -->
-    <div id="visitorCounter" style="background:#e0f0ff; color:#007bff; font-weight:600; font-size:0.85em; padding:6px 12px; border-radius:12px; display:inline-flex; align-items:center; gap:6px; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
-      <span>👥 Visitors:</span>
-      <span id="visitorNumber">0</span>
+    <div id="visitorCounter" style="flex:0 0 auto; background:#e0f0ff; color:#007bff; font-weight:600; font-size:0.85em; padding:6px 12px; border-radius:12px; display:inline-flex; align-items:center; gap:6px; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+      👥 Visitors: <span id="visitorNumber">0</span>
     </div>
+    
   </div>
 </footer>
 
 <!-- Visitor Counter Script -->
 <script>
-  // CountAPI: Increment and fetch visitor count
-  fetch("https://api.countapi.xyz/hit/amola-website/total_visitors?cacheBuster=" + Math.random())
+  // Make sure the namespace/key exists first: 
+  // https://countapi.xyz/create?namespace=amola-website&key=total_visitors&value=0
+
+  fetch("https://api.countapi.xyz/hit/amola-website/total_visitors")
     .then(res => res.json())
     .then(data => {
-      // Display the current visitor count
       document.getElementById("visitorNumber").textContent = data.value;
     })
-    .catch(err => console.error("Error fetching visitor count:", err));
+    .catch(err => console.error("CountAPI error:", err));
 </script>
+
 
 </body>
 </html>
+
 
 
 
