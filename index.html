@@ -85,7 +85,26 @@
   margin: 0;
 }
 
-nav.navbar { background-color: #000; padding: 16px 0; text-align: center; animation: fadeIn 1.2s ease-in-out; } nav.navbar a { color: white; text-decoration: none; margin: 0 12px; font-weight: 500; transition: color 0.3s, transform 0.3s; } nav.navbar a:hover { color: #ffe600; transform: scale(1.1); }
+ nav.navbar {
+      background-color: #000;
+      padding: 10px 0;
+      text-align: center;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    nav.navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    nav.navbar a:hover {
+      color: #00c6ff;
+      transform: scale(1.1);
+      text-shadow: 0 0 10px #00c6ff;
+    }
   
 
   /* ===== CAROUSEL & CARDS (kept same) ===== */
@@ -403,6 +422,7 @@ topBtn.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}))
 </script>
 </body>
 </html>
+
 
 
 
