@@ -41,12 +41,12 @@
     border-bottom: 1px solid var(--accent);
   }
 
-  /* ===== HEADER FROM FIRST PAGE ===== */
+  /* HEADER */
   header {
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
                 url('header-bg1.png') center/cover no-repeat;
     color: white;
-    padding: 20px 20px;
+    padding: 40px 20px;
     text-align: center;
     animation: fadeInDown 1s ease-in-out;
     position: relative;
@@ -74,16 +74,19 @@
     font-weight: 300;
   }
 
+  /* NAVBAR */
   nav.navbar {
     background-color: #000;
     padding: 10px 0;
-    text-align: center;
+    display: flex;
+    justify-content: center;   /* center links horizontally */
+    flex-wrap: wrap;           /* allow wrapping on smaller screens */
     animation: fadeIn 1.2s ease-in-out;
   }
   nav.navbar a {
     color: white;
     text-decoration: none;
-    margin: 0 12px;
+    margin: 5px 10px;          /* spacing for wrapping */
     font-weight: 500;
     transition: color 0.3s, transform 0.3s;
   }
@@ -92,7 +95,7 @@
     transform: scale(1.1);
   }
 
-  /* ===== CAROUSEL & CARDS (kept same) ===== */
+  /* CAROUSEL */
   .carousel-wrap {
     position: relative;
     width: 100%;
@@ -197,6 +200,7 @@
     box-shadow:0 6px 18px rgba(0,198,255,0.18);
   }
 
+  /* CARDS */
   .cards{display:flex;gap:20px;justify-content:center;padding:36px 18px;flex-wrap:wrap}
   .card{background:#fff;padding:20px;border-radius:16px;width:280px;box-shadow:0 8px 22px rgba(0,0,0,0.08);transition:.25s}
   .card:hover{transform:translateY(-8px)}
@@ -211,25 +215,15 @@
   #topBtn:hover{transform:scale(1.08)}
 
   /* responsive */
-  @media (max-width:900px){ .slide-content h2{font-size:1.6rem} }
+  @media (max-width:900px){ 
+    .slide-content h2{font-size:1.6rem} 
+  }
   @media (max-width:600px){ 
     .arrow{width:40px;height:40px} 
     .slide-content h2{font-size:1.4rem} 
     header{padding:40px 15px} 
     .header-center h1{font-size:1.6rem} 
     .header-center p{font-size:0.9rem} 
-
-    /* Navbar horizontal scroll for mobile */
-    nav.navbar {
-      display: flex;
-      overflow-x: auto;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-    }
-    nav.navbar a {
-      display: inline-block;
-      margin: 0 12px;
-    }
   }
   
   /* ANIMATIONS */
@@ -251,7 +245,7 @@
  </marquee>
 </div>
 
-<!-- HEADER FROM FIRST PAGE -->
+<!-- HEADER -->
 <header>
   <div class="header-center">
     <img src="IMG-20250911-WA0006.jpg" alt="Logo">
@@ -277,12 +271,8 @@
 <div class="carousel-wrap">
   <div class="carousel" id="carousel">
     <div class="slides" id="slidesContainer"></div>
-
-    <!-- arrows -->
     <div class="arrow arrow-left" id="prevBtn">&#10094;</div>
     <div class="arrow arrow-right" id="nextBtn">&#10095;</div>
-
-    <!-- dots -->
     <div class="dots" id="dotsContainer"></div>
   </div>
 </div>
@@ -306,7 +296,7 @@
 <!-- FOOTER -->
 <footer>
   <div>© 2025 Amola Yuva Shakti Mandal Samiti | All Rights Reserved<br>Designed & Managed by Rohit Amoli</div>
-  <div id="visitorCounter">👥 Visitors: <span id="visitorNumber">0</span></div>
+  
 </footer>
 
 <!-- TOP BUTTON -->
@@ -407,4 +397,3 @@ topBtn.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}))
 </script>
 </body>
 </html>
-
