@@ -384,4 +384,26 @@ slidesContainer.addEventListener('touchend', () => {
 
 function initSlider(){
   if(total === 0){
-    const s = document.create
+    const s = document.createElement('div'); s.className='slide'; s.style.background='#222'; slidesContainer.appendChild(s);
+  }
+}
+initSlider();
+
+/* === TOP BUTTON === */
+const topBtn = document.getElementById('topBtn');
+window.onscroll = () => { topBtn.style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? "flex" : "none"; };
+topBtn.onclick = () => { window.scrollTo({top:0,behavior:'smooth'}); };
+
+/* === HAMBURGER MENU === */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => { navLinks.classList.toggle('show'); });
+
+/* === VISITOR COUNTER === */
+let count = parseInt(localStorage.getItem('visitorCount')) || 0;
+count++; localStorage.setItem('visitorCount', count);
+document.getElementById('visitorNumber').textContent = count;
+</script>
+
+</body>
+</html>
