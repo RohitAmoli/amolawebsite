@@ -195,10 +195,34 @@
   <h2>Our Gallery</h2>
   <p>Videos & Photos from our events, awareness drives, and cultural programs.</p>
 
-<div id="galleryLoader" 
-     style="text-align:center; padding:20px; font-size:18px; color:#007bff;">
-     Loading gallery...
+<div id="galleryLoader" style="
+    text-align:center;
+    font-size:18px;
+    color:#007bff;
+    padding:10px;
+    font-weight:600;
+">
+    <div class="loader-line"></div>
+    Loading Gallery...
 </div>
+
+<style>
+.loader-line {
+    width: 80px;
+    height: 3px;
+    background: #007bff;
+    margin: 0 auto 8px;
+    border-radius: 2px;
+    animation: lineMove 1.2s infinite ease-in-out;
+}
+
+@keyframes lineMove {
+    0% { transform: scaleX(0.2); opacity: 0.4; }
+    50% { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(0.2); opacity: 0.4; }
+}
+</style>
+
 
 <div id="galleryGrid" class="gallery-grid"></div>
 
@@ -266,6 +290,7 @@ fetch(apiURL)
 
 </body>
 </html>
+
 
 
 
