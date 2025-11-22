@@ -6,97 +6,6 @@
   <title>Member/Admin Login - Amola Yuva Shakti Mandal Samiti</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-
-
-/* Navbar */
-nav.navbar {
-  background:#000; padding:12px 5px;
-  display:flex; flex-wrap:wrap;
-  justify-content:center; gap:10px;
-}
-nav.navbar a {
-  color:white;
-  text-decoration:none;
-  font-weight:500;
-  padding:6px 12px;
-  border-radius:6px;
-  transition:0.3s;
-}
-
-/* Highlighted News tab - text colorful and animated */
-nav.navbar a.highlight-news {
-  background: linear-gradient(90deg, #ff0066, #ffcc00, #00ffcc, #0066ff);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight:700;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
-  animation: gradientShift 3s ease infinite, neonPulse 1.5s infinite alternate;
-}
-
-nav.navbar a.highlight-news:hover {
-  transform: scale(1.1);
-  text-shadow: 0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff;
-}
-
-/* Animations */
-@keyframes gradientShift {
-  0% { background-position:0% 50%; }
-  50% { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
-}
-
-@keyframes neonPulse {
-  0% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
-  50% { text-shadow:0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff; }
-  100% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
-}
-
-
-
-
-
-/* Highlighted tab animation */
-.highlight-tab {
-  background: linear-gradient(45deg, #ff0066, #ffcc00, #00ffcc, #0066ff);
-  background-size: 300% 300%;
-  color: #fff;
-  font-weight:700;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
-  animation: gradientShift 3s ease infinite, neonPulse 1.5s infinite alternate, popin 0.6s ease forwards;
-  transform: translateY(-2px);
-  border-radius:6px;
-  padding:6px 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-/* Hover effect */
-.highlight-tab:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
-}
-
-/* Gradient shift animation */
-@keyframes gradientShift {
-  0% { background-position:0% 50%; }
-  50% { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
-}
-
-/* Neon pulse animation */
-@keyframes neonPulse {
-  0% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
-  50% { text-shadow:0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff; }
-  100% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
-}
-
-/* Pop-in animation */
-@keyframes popin {
-  0% { transform: scale(0.3) translateY(-2px); opacity:0; }
-  70% { transform: scale(1.2) translateY(-2px); opacity:1; }
-  100% { transform: scale(1) translateY(-2px); opacity:1; }
-}
-
     * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
     body { background-color:#f8f9fa; color:#333; line-height:1.6; text-align:center; }
     header { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('header-bg1.png') center/cover no-repeat; color:white; padding:60px 20px; text-align:center; animation: fadeInDown 1s ease-in-out; }
@@ -111,7 +20,7 @@ nav.navbar a.highlight-news:hover {
     .login-container, .upload-container { max-width:450px; margin:20px auto; padding:30px; background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('header-bg1.png') center/cover fixed; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); text-align:center; }
     h2 { color:#007bff; margin-bottom:15px; font-size:1.6em; font-weight:700; }
     p { color:#555; font-size:1em; margin-bottom:10px; }
-    input[type="password"], input[type="file"], input[type="text"], textarea { width:90%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; font-size:1em; }
+    input[type="password"], input[type="file"], input[type="text"] { width:90%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; font-size:1em; }
     button { background-color:#007bff; color:#fff; border:none; padding:10px 25px; border-radius:8px; cursor:pointer; font-weight:600; transition: background-color 0.3s ease, transform 0.3s ease; }
     button:hover { background-color:#0056b3; transform: scale(1.05); }
     .tabBtn { background-color:#007bff; color:white; border:none; padding:10px 20px; margin:0 5px; border-radius:6px; cursor:pointer; font-weight:600; transition: background-color 0.3s ease; }
@@ -131,602 +40,45 @@ nav.navbar a.highlight-news:hover {
     @keyframes fadeInDown { from { opacity:0; transform:translateY(-30px);} to { opacity:1; transform:translateY(0);} }
     @keyframes fadeInUp { from { opacity:0; transform:translateY(30px);} to { opacity:1; transform:translateY(0);} }
     @keyframes fadeIn { from { opacity:0;} to { opacity:1;} }
-  </style>
-</head>
 
-<body>
 
-<header>
-  <div class="header-center">
-    <img src="IMG-20250911-WA0006.jpg" alt="Logo">
-    <h1>Amola Yuva Shakti Mandal Samiti</h1>
-    <p>Empowering Our Village Through Unity, Education & Progress</p>
-  </div>
-</header>
-
-<nav class="navbar">
-  <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="activities.html">Initiatives</a>
-  <a href="live.html">Live</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="join.html">Join Us</a>
-  <a href="donate.html">Support Us</a>
-  <a href="contact.html">Contact</a>
-  <a href="member.html">Login</a>
-  <a href="news.html" class="highlight-news">रंत रैबार</a>
-</nav>
-
-<section id="loginSection">
-  <div class="login-container">
-    <h2>Login Portal</h2>
-    <div class="tab-buttons">
-      <button class="tab-btn active" onclick="openLoginTab('member')">Member Login</button>
-      <button class="tab-btn" onclick="openLoginTab('admin')">Admin Login</button>
-    </div>
-
-    <div id="memberTabContent" class="tabContent" style="display:block;">
-      <input type="password" id="memberCode" placeholder="Enter Member Access Code">
-      <button onclick="checkLogin('member')">Login</button>
-      <p id="memberMessage"></p>
-      <p>Members can access their profile, view content, and participate in activities.</p>
-    </div>
-
-    <div id="adminTabContent" class="tabContent" style="display:none;">
-      <input type="password" id="adminCode" placeholder="Enter Admin Access Code">
-      <button onclick="checkLogin('admin')">Login</button>
-      <p id="adminMessage"></p>
-      <p>Admins can manage members and perform all system operations.</p>
-    </div>
-  </div>
-</section>
-
-<section id="uploadSection" style="display:none;">
-  <div style="text-align:right; margin-bottom:10px;">
-    <button onclick="logoutMember()" style="background:#dc3545;">Logout</button>
-  </div>
-
-  <div style="text-align:center; margin-bottom:20px;" id="tabsContainer">
-    <button class="tabBtn" onclick="openTab('mediaTab')" id="mediaTabBtn">Media Upload</button>
-    <button class="tabBtn" onclick="openTab('memberListTab')">Member List</button>
-    <button class="tabBtn" onclick="openNewsTab()">News Publish</button>
-  </div>
-
-  <!-- MEDIA UPLOAD -->
-  <div id="mediaTab" class="tabContent" style="display:none;">
-    <div class="upload-container">
-      <h2>Media Upload</h2>
-      <input type="file" id="fileInput" accept="image/*,video/*">
-      <button onclick="uploadFile()">Upload</button>
-      <p id="uploadStatus"></p>
-    </div>
-    <div id="mediaGallery" class="gallery"></div>
-  </div>
-
-  <!-- MEMBER LIST -->
-  <div id="memberListTab" class="tabContent" style="display:none;">
-    <h2>Registered Members</h2>
-    <p>Search members:</p>
-    <input type="text" id="memberSearch" placeholder="Search members..." onkeyup="filterMembers()">
-    <p>Or download complete list:</p>
-    <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQMXTRIOrP0xYcPWd0JoinzcQpxa2v8cjsF40l_QnTlcOchBelbWxX97t33osgrPoHjMMiE6ulMlGbM/pub?output=csv" target="_blank">
-      <button>Download CSV</button>
-    </a>
-    <div style="overflow-x:auto; max-height:400px; margin-top:10px;">
-      <table id="memberTable">
-        <thead><tr id="memberTableHeader"></tr></thead>
-        <tbody id="memberTableBody"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- NEWS PUBLISH -->
-  <div id="newsTab" class="tabContent" style="display:none;">
-    <div class="upload-container">
-      <h2>Publish News & Updates</h2>
-      <input type="text" id="newsTitle" placeholder="Enter News Title">
-      <textarea id="newsDesc" placeholder="Enter News Description" style="width:90%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; height:80px;"></textarea>
-      <input type="file" id="newsFile" accept="image/*,video/*">
-      <!-- changed to persistent publish handler -->
-      <button onclick="publishNewsPersistent()">Publish</button>
-      <p id="newsStatus"></p>
-    </div>
-
-    <!-- Display published news -->
-    <div id="newsList" class="gallery" style="margin-top:20px;"></div>
-  </div>
-</section>
-
-<footer>
-  © 2025 Amola Yuva Shakti Mandal Samiti | All Rights Reserved<br>
-  Designed & Managed by Rohit Amoli
-</footer>
-
-<script>
-/* =========================
-   Configuration & Globals
-   ========================= */
-const apiURL = "https://script.google.com/macros/s/AKfycbxG-cxMow1x7R1r_UShOQI6cUtJXCM7ClnKGYXoaYXizjZyiLfEHi825rfcnwaIbOCHww/exec";
-const newsAPI = "https://script.google.com/macros/s/AKfycbxGHoTliYvKU7bztEawXxYmnJO_WmpJlfvy2RgeCBC9DrKCJzUaWPZEefrsMTVLaerT/exec";
-const adminCode = "mission123@2026";
-const memberCode = "member@2026";
-let currentRole = ""; // '', 'member', or 'admin'
-
-/* ==============
-   Tab / Login UI
-   ============== */
-function openLoginTab(tab){
-  document.getElementById('memberTabContent').style.display = (tab==='member') ? 'block' : 'none';
-  document.getElementById('adminTabContent').style.display = (tab==='admin') ? 'block' : 'none';
-  const btns = document.querySelectorAll('.tab-buttons .tab-btn');
-  btns.forEach(b=>b.classList.remove('active'));
-  btns[tab==='member'?0:1].classList.add('active');
+/* Highlight / Blinking Tab Style */
+nav.navbar a.highlight-tab {
+  background: linear-gradient(90deg, #ff0066, #ffcc00, #00ffcc, #0066ff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  animation: gradientShift 3s ease infinite, neonPulse 1.5s infinite alternate;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-function checkLogin(role){
-  const code = role==='member'? document.getElementById('memberCode').value.trim() : document.getElementById('adminCode').value.trim();
-  if((role==='member' && code===memberCode) || (role==='admin' && code===adminCode)){
-    currentRole = role;
-    document.getElementById('loginSection').style.display='none';
-    document.getElementById('uploadSection').style.display='block';
-    loadMembers();
-    if(currentRole==='admin'){
-      openTab('mediaTab');
-      loadMedia();
-      document.getElementById("mediaTabBtn").style.display="inline-block";
-    } else {
-      openTab('memberListTab');
-      document.getElementById("mediaTab").style.display="none";
-      document.getElementById("mediaTabBtn").style.display="none";
-    }
-  } else {
-    document.getElementById(role+'Message').textContent='Invalid access code!';
-  }
+nav.navbar a.highlight-tab:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff;
+  cursor: pointer;
 }
 
-function logoutMember(){
-  currentRole="";
-  document.getElementById('uploadSection').style.display='none';
-  document.getElementById('loginSection').style.display='block';
-  document.getElementById('memberCode').value='';
-  document.getElementById('adminCode').value='';
-  document.getElementById('memberMessage').textContent='';
-  document.getElementById('adminMessage').textContent='';
+/* Animations */
+@keyframes gradientShift {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
 }
 
-function openTab(tabId){
-  document.querySelectorAll('.tabContent').forEach(tab=>tab.style.display='none');
-  const el = document.getElementById(tabId);
-  if (el) el.style.display='block';
+@keyframes neonPulse {
+  0% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
+  50% { text-shadow:0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff; }
+  100% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
 }
 
-/* ===========
-   Media Upload
-   =========== */
-function uploadFile(){
-  if(currentRole!=='admin') return;
-  const fileInput=document.getElementById('fileInput');
-  const status=document.getElementById('uploadStatus');
-  if(fileInput.files.length===0){ status.textContent="Please select a file."; status.style.color="red"; return; }
 
-  const file=fileInput.files[0];
-  const reader=new FileReader();
-  reader.onload=function(e){
-    const base64Data=e.target.result.split(",")[1];
-    const formData=new URLSearchParams();
-    formData.append("fileName", file.name);
-    formData.append("fileData", base64Data);
-    formData.append("mimeType", file.type);
-
-    status.textContent="Uploading..."; status.style.color="blue";
-    fetch(apiURL, { method:"POST", body:formData })
-      .then(res=>res.json())
-      .then(data=>{ if(data.success){ status.textContent="Upload successful!"; status.style.color="green"; fileInput.value=""; loadMedia(); } else { status.textContent="Upload failed: "+(data.message||"Unknown error"); status.style.color="red"; } })
-      .catch(err=>{ console.error(err); status.textContent="Error uploading file."; status.style.color="red"; });
-  };
-  reader.readAsDataURL(file);
-}
-
-function loadMedia(){
-  fetch(apiURL+"?action=getFiles")
-    .then(res=>res.json())
-    .then(files=>{
-      const gallery=document.getElementById('mediaGallery'); gallery.innerHTML="";
-      files.forEach(file=>{
-        const div=document.createElement('div'); div.style.border="1px solid #ccc"; div.style.padding="10px"; div.style.textAlign="center"; div.style.width="200px";
-        if(file.type && file.type.startsWith("image/")){ const img=document.createElement('img'); img.src=`https://lh3.googleusercontent.com/d/${file.id}=w800`; img.alt=file.name; div.appendChild(img); }
-        else if(file.type && file.type.startsWith("video/")){ const iframe=document.createElement('iframe'); iframe.src=`https://drive.google.com/file/d/${file.id}/preview`; iframe.allow="autoplay; encrypted-media"; iframe.frameBorder="0"; iframe.width="100%"; iframe.height="150px"; div.appendChild(iframe); }
-        const btn=document.createElement('button'); btn.textContent="Delete"; btn.style.background="#dc3545"; btn.style.color="white"; btn.style.border="none"; btn.style.padding="5px 10px"; btn.style.cursor="pointer";
-        btn.onclick=()=>deleteMedia(file.id); div.appendChild(btn); gallery.appendChild(div);
-      });
-    }).catch(err=>console.error("Error loading media:",err));
-}
-
-function deleteMedia(fileId){
-  if(currentRole!=="admin") return;
-  if(confirm("Are you sure you want to delete this file?")){
-    fetch(apiURL+"?action=deleteFile&fileId="+encodeURIComponent(fileId),{method:"POST"})
-      .then(res=>res.json())
-      .then(data=>{ if(data.success) loadMedia(); else alert("Failed to delete file: "+(data.message||"Unknown error")); })
-      .catch(err=>console.error(err));
-  }
-}
-
-/* ===========
-   Members List
-   =========== */
-function loadMembers(){
-  const csvUrl="https://docs.google.com/spreadsheets/d/e/2PACX-1vQMXTRIOrP0xYcPWd0JoinzcQpxa2v8cjsF40l_QnTlcOchBelbWxX97t33osgrPoHjMMiE6ulMlGbM/pub?output=csv";
-  fetch(csvUrl)
-    .then(res=>res.text())
-    .then(data=>{
-      const rows=data.split("\n").filter(r=>r.trim()!=="");
-      let headers = rows[0] ? rows[0].split(",").slice(1) : [];
-      const tableHeader=document.getElementById("memberTableHeader"); tableHeader.innerHTML="<th>S.No</th>"; headers.forEach(h=>{ tableHeader.innerHTML+=`<th>${h}</th>`; });
-
-      const tableBody=document.getElementById("memberTableBody"); tableBody.innerHTML="";
-      const seen=new Set(); let serial=1;
-
-      for(let i=1;i<rows.length;i++){
-        let cells=rows[i].split(",").slice(1);
-        if(cells.every(c=>c.trim()==="")) continue;
-        let mobile=cells[0] ? cells[0].trim() : ""; let email=cells[1] ? cells[1].trim() : ""; let uniqueKey=mobile+"|"+email;
-        if(seen.has(uniqueKey)) continue; seen.add(uniqueKey);
-
-        const row=document.createElement("tr"); row.innerHTML+=`<td>${serial}</td>`; serial++;
-        cells.forEach(c=>{ row.innerHTML+=`<td>${c}</td>`; }); tableBody.appendChild(row);
-      }
-    }).catch(err=>console.error("Error loading members:",err));
-}
-
-function filterMembers(){
-  const filter=document.getElementById("memberSearch").value.toUpperCase();
-  const table=document.getElementById("memberTable");
-  const tr=table.getElementsByTagName("tr");
-  for(let i=1;i<tr.length;i++){
-    let tdArr=tr[i].getElementsByTagName("td"); let visible=false;
-    for(let td of tdArr){ if(td.textContent.toUpperCase().indexOf(filter)>-1){ visible=true; break; } }
-    tr[i].style.display=visible ? "" : "none";
-  }
-}
-
-/* ==========================
-   Helper: Drive URL preview
-   ========================== */
-function convertDriveURLToPreview(url, forVideo = false){
-  if(!url) return "";
-  let fileId = "";
-  try{
-    if(url.includes("file/d/")) fileId = url.split("file/d/")[1].split(/[/?#]/)[0];
-    else if(url.includes("id=")) fileId = url.split("id=")[1].split(/[&?#]/)[0];
-    else{
-      const m = url.match(/[-\w]{25,}/);
-      if(m) fileId = m[0];
-    }
-  }catch(e){ fileId = ""; }
-  if(!fileId) return url;
-  return forVideo ? `https://drive.google.com/file/d/${fileId}/preview` : `https://drive.google.com/uc?export=view&id=${fileId}`;
-}
-
-/* =========================
-   News: publish / load / delete
-   ========================= */
-function publishNewsPersistent(){
-  const title = document.getElementById("newsTitle").value.trim();
-  const desc = document.getElementById("newsDesc").value.trim();
-  const fileInput = document.getElementById("newsFile");
-  const status = document.getElementById("newsStatus");
-
-  if(!title || !desc){
-    status.textContent = "Title & Description required!";
-    status.style.color = "red";
-    return;
-  }
-
-  const params = new URLSearchParams();
-  params.append("title", title);
-  params.append("description", desc);
-  params.append("action", "addNews");
-
-  if(fileInput.files.length > 0){
-    const file = fileInput.files[0];
-    const reader = new FileReader();
-    reader.onload = function(e){
-      const base64Data = e.target.result.split(",")[1];
-      params.append("fileName", file.name);
-      params.append("fileData", base64Data);
-      params.append("mimeType", file.type);
-
-      status.textContent = "Publishing..."; status.style.color="blue";
-      fetch(newsAPI, { method:"POST", body: params })
-        .then(res=>res.json())
-        .then(data=>{
-          if(data.success){
-            status.textContent = "News published successfully!"; status.style.color="green";
-            document.getElementById("newsTitle").value="";
-            document.getElementById("newsDesc").value="";
-            fileInput.value="";
-            loadNews();
-          } else {
-            status.textContent = "Publish failed: "+(data.message||"Unknown error"); status.style.color="red";
-          }
-        })
-        .catch(err=>{ console.error(err); status.textContent="Error publishing news."; status.style.color="red"; });
-    };
-    reader.readAsDataURL(file);
-  } else {
-    status.textContent = "Publishing..."; status.style.color="blue";
-    fetch(newsAPI, { method:"POST", body: params })
-      .then(res=>res.json())
-      .then(data=>{
-        if(data.success){
-          status.textContent = "News published successfully!"; status.style.color="green";
-          document.getElementById("newsTitle").value="";
-          document.getElementById("newsDesc").value="";
-          loadNews();
-        } else {
-          status.textContent = "Publish failed: "+(data.message||"Unknown error"); status.style.color="red";
-        }
-      })
-      .catch(err=>{ console.error(err); status.textContent="Error publishing news."; status.style.color="red"; });
-  }
-}
-
-function loadNews(){
-  fetch(newsAPI + "?action=getAllNews")
-    .then(res=>res.json())
-    .then(data=>{
-      const newsList = document.getElementById("newsList");
-      newsList.innerHTML = "";
-      if(!Array.isArray(data) || data.length === 0){
-        newsList.innerHTML = "<p style='width:100%; text-align:center;'>No news available.</p>";
-        return;
-      }
-      data.reverse().forEach(item=>{
-        const newsDiv = document.createElement("div");
-        newsDiv.style.border="1px solid #ccc";
-        newsDiv.style.padding="10px";
-        newsDiv.style.width="250px";
-        newsDiv.style.textAlign="center";
-        newsDiv.dataset.id = item.id || "";
-
-        const newsTitleElem = document.createElement("h3");
-        newsTitleElem.textContent = item.title;
-        newsTitleElem.style.fontSize="1.1em";
-        newsTitleElem.style.color="#007bff";
-        newsDiv.appendChild(newsTitleElem);
-
-        const newsDescElem = document.createElement("p");
-        newsDescElem.textContent = item.description;
-        newsDescElem.style.fontSize="0.9em";
-        newsDiv.appendChild(newsDescElem);
-
-        if(item.fileUrl && item.fileType){
-          const lowerType = (item.fileType || "").toLowerCase();
-          if(lowerType.startsWith("image/")){
-            const img = document.createElement("img");
-            img.src = convertDriveURLToPreview(item.fileUrl, false);
-            img.style.maxWidth="100%";
-            img.style.maxHeight="150px";
-            img.style.marginTop="5px";
-            newsDiv.appendChild(img);
-          } else if(lowerType.startsWith("video/")){
-            const video = document.createElement("video");
-            video.src = convertDriveURLToPreview(item.fileUrl, true);
-            video.controls = true;
-            video.style.maxWidth="100%";
-            video.style.maxHeight="150px";
-            video.style.marginTop="5px";
-            newsDiv.appendChild(video);
-          } else {
-            const img = document.createElement("img");
-            img.src = convertDriveURLToPreview(item.fileUrl, false);
-            img.style.maxWidth="100%";
-            img.style.maxHeight="150px";
-            img.style.marginTop="5px";
-            newsDiv.appendChild(img);
-          }
-        }
-
-        if(currentRole === 'admin'){
-          const delBtn = document.createElement("button");
-          delBtn.textContent = "Delete";
-          delBtn.style.background="#dc3545";
-          delBtn.style.color="white";
-          delBtn.style.border="none";
-          delBtn.style.padding="5px 10px";
-          delBtn.style.marginTop="5px";
-          delBtn.style.cursor="pointer";
-          delBtn.onclick = ()=>deleteNews(item.id, newsDiv);
-          newsDiv.appendChild(delBtn);
-        }
-
-        newsList.appendChild(newsDiv);
-      });
-    })
-    .catch(err=>{
-      console.error("Error loading news:", err);
-      const newsList = document.getElementById("newsList");
-      newsList.innerHTML = "<p style='width:100%; text-align:center;'>Unable to load news.</p>";
-    });
-}
-
-function deleteNews(newsId, newsDiv){
-  if(currentRole !== 'admin') return;
-  if(!confirm("Are you sure you want to delete this news item?")) return;
-  const params = new URLSearchParams();
-  params.append("id", newsId);
-  params.append("action","deleteNews");
-
-  fetch(newsAPI, { method:"POST", body: params })
-    .then(res=>res.json())
-    .then(data=>{
-      if(data.success){
-        newsDiv.remove();
-      } else {
-        alert("Failed to delete news: "+(data.message||"Unknown error"));
-      }
-    })
-    .catch(err=>{ console.error(err); alert("Error deleting news."); });
-}
-
-/* openNewsTab: show news tab and load */
-function openNewsTab(){
-  document.querySelectorAll('.tabContent').forEach(tab=>tab.style.display='none');
-  const newsEl = document.getElementById('newsTab');
-  if(newsEl) newsEl.style.display='block';
-  loadNews();
-}
-
-/* Prevent easy view-source / right-click optionally */<!DOCTYPE html>
-<html lang="hi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Member/Admin Login - Amola Yuva Shakti Mandal Samiti</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-
-
-/* Navbar horizontal scroll for mobile */
-nav.navbar {
-  flex-wrap: nowrap;                /* prevent wrapping */
-  overflow-x: auto;                 /* enable horizontal scroll */
-  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-  gap: 10px;
-  padding: 10px 5px;
-}
-
-nav.navbar a {
-  flex: 0 0 auto;                   /* don't shrink links */
-  white-space: nowrap;               /* keep text in one line */
-}
 
 
     
-/* Navbar */
-nav.navbar {
-  background:#000; padding:12px 5px;
-  display:flex; flex-wrap:wrap;
-  justify-content:center; gap:10px;
-}
-nav.navbar a {
-  color:white;
-  text-decoration:none;
-  font-weight:500;
-  padding:6px 12px;
-  border-radius:6px;
-  transition:0.3s;
-}
-
-/* Highlighted News tab - text colorful and animated */
-nav.navbar a.highlight-news {
-  background: linear-gradient(90deg, #ff0066, #ffcc00, #00ffcc, #0066ff);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight:700;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
-  animation: gradientShift 3s ease infinite, neonPulse 1.5s infinite alternate;
-}
-
-nav.navbar a.highlight-news:hover {
-  transform: scale(1.1);
-  text-shadow: 0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff;
-}
-
-/* Animations */
-@keyframes gradientShift {
-  0% { background-position:0% 50%; }
-  50% { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
-}
-
-@keyframes neonPulse {
-  0% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
-  50% { text-shadow:0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff; }
-  100% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
-}
-
-
-
-
-
-/* Highlighted tab animation */
-.highlight-tab {
-  background: linear-gradient(45deg, #ff0066, #ffcc00, #00ffcc, #0066ff);
-  background-size: 300% 300%;
-  color: #fff;
-  font-weight:700;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
-  animation: gradientShift 3s ease infinite, neonPulse 1.5s infinite alternate, popin 0.6s ease forwards;
-  transform: translateY(-2px);
-  border-radius:6px;
-  padding:6px 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-/* Hover effect */
-.highlight-tab:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
-}
-
-/* Gradient shift animation */
-@keyframes gradientShift {
-  0% { background-position:0% 50%; }
-  50% { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
-}
-
-/* Neon pulse animation */
-@keyframes neonPulse {
-  0% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
-  50% { text-shadow:0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff; }
-  100% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
-}
-
-/* Pop-in animation */
-@keyframes popin {
-  0% { transform: scale(0.3) translateY(-2px); opacity:0; }
-  70% { transform: scale(1.2) translateY(-2px); opacity:1; }
-  100% { transform: scale(1) translateY(-2px); opacity:1; }
-}
-
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
-    body { background-color:#f8f9fa; color:#333; line-height:1.6; text-align:center; }
-    header { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('header-bg1.png') center/cover no-repeat; color:white; padding:60px 20px; text-align:center; animation: fadeInDown 1s ease-in-out; }
-    .header-center { display:flex; flex-direction:column; align-items:center; gap:10px; }
-    .header-center img { width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid white; box-shadow:0 0 15px rgba(255,255,255,0.3); }
-    .header-center h1 { font-size:1.9em; font-weight:700; letter-spacing:1px; }
-    .header-center p { font-size:1em; font-weight:300; }
-    nav.navbar { background-color:#000; padding:10px 0; text-align:center; animation: fadeIn 1.2s ease-in-out; }
-    nav.navbar a { color:white; text-decoration:none; margin:0 12px; font-weight:500; transition: color 0.3s, transform 0.3s; }
-    nav.navbar a:hover { color:#00c6ff; transform:scale(1.1); text-shadow:0 0 10px #00c6ff; }
-    section { padding:50px 20px; animation: fadeInUp 1.2s ease-in-out; }
-    .login-container, .upload-container { max-width:450px; margin:20px auto; padding:30px; background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('header-bg1.png') center/cover fixed; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); text-align:center; }
-    h2 { color:#007bff; margin-bottom:15px; font-size:1.6em; font-weight:700; }
-    p { color:#555; font-size:1em; margin-bottom:10px; }
-    input[type="password"], input[type="file"], input[type="text"], textarea { width:90%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; font-size:1em; }
-    button { background-color:#007bff; color:#fff; border:none; padding:10px 25px; border-radius:8px; cursor:pointer; font-weight:600; transition: background-color 0.3s ease, transform 0.3s ease; }
-    button:hover { background-color:#0056b3; transform: scale(1.05); }
-    .tabBtn { background-color:#007bff; color:white; border:none; padding:10px 20px; margin:0 5px; border-radius:6px; cursor:pointer; font-weight:600; transition: background-color 0.3s ease; }
-    .tabBtn:hover { background-color:#0056b3; }
-    .tabContent { animation: fadeInUp 0.8s ease-in-out; margin-top:20px; }
-    #memberTable { width:100%; margin-top:20px; border-collapse:collapse; display:block; max-height:400px; overflow-y:auto; }
-    #memberTable thead { position: sticky; top:0; }
-    #memberTable th, #memberTable td { border:1px solid #ccc; padding:8px; text-align:left; }
-    #memberTable th { background:#007bff; color:white; }
-    .gallery { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; margin-top:20px; }
-    .gallery div { border:1px solid #ccc; padding:10px; text-align:center; width:200px; }
-    .gallery img, .gallery video { max-width:100%; max-height:150px; display:block; margin-bottom:5px; }
-    footer { background:#111; color:white; text-align:center; padding:18px 0; font-size:0.9em; margin-top:40px; box-shadow:0 -2px 10px rgba(0,0,0,0.3); }
-    .tab-buttons { display:flex; justify-content:center; gap:10px; margin-bottom:15px; }
-    .tab-btn { flex:1; padding:12px; border:none; border-radius:8px 8px 0 0; background:#ddd; color:#333; font-weight:500; cursor:pointer; transition:all 0.3s ease; }
-    .tab-btn.active { background:#007bff; color:#fff; }
-    @keyframes fadeInDown { from { opacity:0; transform:translateY(-30px);} to { opacity:1; transform:translateY(0);} }
-    @keyframes fadeInUp { from { opacity:0; transform:translateY(30px);} to { opacity:1; transform:translateY(0);} }
-    @keyframes fadeIn { from { opacity:0;} to { opacity:1;} }
   </style>
 </head>
 
@@ -750,7 +102,7 @@ nav.navbar a.highlight-news:hover {
   <a href="donate.html">Support Us</a>
   <a href="contact.html">Contact</a>
   <a href="member.html">Login</a>
-  <a href="news.html" class="highlight-news">रंत रैबार</a>
+   <a href="news.html" class="highlight-tab">News</a>
 </nav>
 
 <section id="loginSection">
@@ -785,11 +137,9 @@ nav.navbar a.highlight-news:hover {
   <div style="text-align:center; margin-bottom:20px;" id="tabsContainer">
     <button class="tabBtn" onclick="openTab('mediaTab')" id="mediaTabBtn">Media Upload</button>
     <button class="tabBtn" onclick="openTab('memberListTab')">Member List</button>
-    <button class="tabBtn" onclick="openNewsTab()">News Publish</button>
   </div>
 
-  <!-- MEDIA UPLOAD -->
-  <div id="mediaTab" class="tabContent" style="display:none;">
+  <div id="mediaTab" class="tabContent">
     <div class="upload-container">
       <h2>Media Upload</h2>
       <input type="file" id="fileInput" accept="image/*,video/*">
@@ -799,7 +149,6 @@ nav.navbar a.highlight-news:hover {
     <div id="mediaGallery" class="gallery"></div>
   </div>
 
-  <!-- MEMBER LIST -->
   <div id="memberListTab" class="tabContent" style="display:none;">
     <h2>Registered Members</h2>
     <p>Search members:</p>
@@ -815,22 +164,6 @@ nav.navbar a.highlight-news:hover {
       </table>
     </div>
   </div>
-
-  <!-- NEWS PUBLISH -->
-  <div id="newsTab" class="tabContent" style="display:none;">
-    <div class="upload-container">
-      <h2>Publish News & Updates</h2>
-      <input type="text" id="newsTitle" placeholder="Enter News Title">
-      <textarea id="newsDesc" placeholder="Enter News Description" style="width:90%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; height:80px;"></textarea>
-      <input type="file" id="newsFile" accept="image/*,video/*">
-      <!-- changed to persistent publish handler -->
-      <button onclick="publishNewsPersistent()">Publish</button>
-      <p id="newsStatus"></p>
-    </div>
-
-    <!-- Display published news -->
-    <div id="newsList" class="gallery" style="margin-top:20px;"></div>
-  </div>
 </section>
 
 <footer>
@@ -839,30 +172,22 @@ nav.navbar a.highlight-news:hover {
 </footer>
 
 <script>
-/* =========================
-   Configuration & Globals
-   ========================= */
 const apiURL = "https://script.google.com/macros/s/AKfycbxG-cxMow1x7R1r_UShOQI6cUtJXCM7ClnKGYXoaYXizjZyiLfEHi825rfcnwaIbOCHww/exec";
-const newsAPI = "https://script.google.com/macros/s/AKfycbxGHoTliYvKU7bztEawXxYmnJO_WmpJlfvy2RgeCBC9DrKCJzUaWPZEefrsMTVLaerT/exec";
 const adminCode = "mission123@2026";
 const memberCode = "member@2026";
-let currentRole = ""; // '', 'member', or 'admin'
+let currentRole = "";
 
-/* ==============
-   Tab / Login UI
-   ============== */
 function openLoginTab(tab){
   document.getElementById('memberTabContent').style.display = (tab==='member') ? 'block' : 'none';
   document.getElementById('adminTabContent').style.display = (tab==='admin') ? 'block' : 'none';
-  const btns = document.querySelectorAll('.tab-buttons .tab-btn');
-  btns.forEach(b=>b.classList.remove('active'));
-  btns[tab==='member'?0:1].classList.add('active');
+  document.querySelectorAll('.tab-buttons .tab-btn').forEach(btn=>btn.classList.remove('active'));
+  document.querySelectorAll('.tab-buttons .tab-btn')[tab==='member'?0:1].classList.add('active');
 }
 
 function checkLogin(role){
   const code = role==='member'? document.getElementById('memberCode').value.trim() : document.getElementById('adminCode').value.trim();
   if((role==='member' && code===memberCode) || (role==='admin' && code===adminCode)){
-    currentRole = role;
+    currentRole=role;
     document.getElementById('loginSection').style.display='none';
     document.getElementById('uploadSection').style.display='block';
     loadMembers();
@@ -892,13 +217,10 @@ function logoutMember(){
 
 function openTab(tabId){
   document.querySelectorAll('.tabContent').forEach(tab=>tab.style.display='none');
-  const el = document.getElementById(tabId);
-  if (el) el.style.display='block';
+  document.getElementById(tabId).style.display='block';
 }
 
-/* ===========
-   Media Upload
-   =========== */
+// UPLOAD FILE
 function uploadFile(){
   if(currentRole!=='admin') return;
   const fileInput=document.getElementById('fileInput');
@@ -917,12 +239,16 @@ function uploadFile(){
     status.textContent="Uploading..."; status.style.color="blue";
     fetch(apiURL, { method:"POST", body:formData })
       .then(res=>res.json())
-      .then(data=>{ if(data.success){ status.textContent="Upload successful!"; status.style.color="green"; fileInput.value=""; loadMedia(); } else { status.textContent="Upload failed: "+(data.message||"Unknown error"); status.style.color="red"; } })
+      .then(data=>{
+        if(data.success){ status.textContent="Upload successful!"; status.style.color="green"; fileInput.value=""; loadMedia(); }
+        else { status.textContent="Upload failed: "+(data.message||"Unknown error"); status.style.color="red"; }
+      })
       .catch(err=>{ console.error(err); status.textContent="Error uploading file."; status.style.color="red"; });
   };
   reader.readAsDataURL(file);
 }
 
+// LOAD MEDIA
 function loadMedia(){
   fetch(apiURL+"?action=getFiles")
     .then(res=>res.json())
@@ -930,34 +256,33 @@ function loadMedia(){
       const gallery=document.getElementById('mediaGallery'); gallery.innerHTML="";
       files.forEach(file=>{
         const div=document.createElement('div'); div.style.border="1px solid #ccc"; div.style.padding="10px"; div.style.textAlign="center"; div.style.width="200px";
-        if(file.type && file.type.startsWith("image/")){ const img=document.createElement('img'); img.src=`https://lh3.googleusercontent.com/d/${file.id}=w800`; img.alt=file.name; div.appendChild(img); }
-        else if(file.type && file.type.startsWith("video/")){ const iframe=document.createElement('iframe'); iframe.src=`https://drive.google.com/file/d/${file.id}/preview`; iframe.allow="autoplay; encrypted-media"; iframe.frameBorder="0"; iframe.width="100%"; iframe.height="150px"; div.appendChild(iframe); }
+        if(file.type.startsWith("image/")){ const img=document.createElement('img'); img.src=`https://lh3.googleusercontent.com/d/${file.id}=w800`; img.alt=file.name; div.appendChild(img); }
+        else if(file.type.startsWith("video/")){ const iframe=document.createElement('iframe'); iframe.src=`https://drive.google.com/file/d/${file.id}/preview`; iframe.allow="autoplay; encrypted-media"; iframe.frameBorder="0"; iframe.width="100%"; iframe.height="150px"; div.appendChild(iframe); }
         const btn=document.createElement('button'); btn.textContent="Delete"; btn.style.background="#dc3545"; btn.style.color="white"; btn.style.border="none"; btn.style.padding="5px 10px"; btn.style.cursor="pointer";
         btn.onclick=()=>deleteMedia(file.id); div.appendChild(btn); gallery.appendChild(div);
       });
     }).catch(err=>console.error("Error loading media:",err));
 }
 
+// DELETE MEDIA
 function deleteMedia(fileId){
   if(currentRole!=="admin") return;
   if(confirm("Are you sure you want to delete this file?")){
-    fetch(apiURL+"?action=deleteFile&fileId="+encodeURIComponent(fileId),{method:"POST"})
+    fetch(apiURL+"?action=deleteFile&fileId="+fileId,{method:"POST"})
       .then(res=>res.json())
       .then(data=>{ if(data.success) loadMedia(); else alert("Failed to delete file: "+(data.message||"Unknown error")); })
       .catch(err=>console.error(err));
   }
 }
 
-/* ===========
-   Members List
-   =========== */
+// LOAD MEMBERS
 function loadMembers(){
   const csvUrl="https://docs.google.com/spreadsheets/d/e/2PACX-1vQMXTRIOrP0xYcPWd0JoinzcQpxa2v8cjsF40l_QnTlcOchBelbWxX97t33osgrPoHjMMiE6ulMlGbM/pub?output=csv";
   fetch(csvUrl)
     .then(res=>res.text())
     .then(data=>{
       const rows=data.split("\n").filter(r=>r.trim()!=="");
-      let headers = rows[0] ? rows[0].split(",").slice(1) : [];
+      let headers=rows[0].split(",").slice(1);
       const tableHeader=document.getElementById("memberTableHeader"); tableHeader.innerHTML="<th>S.No</th>"; headers.forEach(h=>{ tableHeader.innerHTML+=`<th>${h}</th>`; });
 
       const tableBody=document.getElementById("memberTableBody"); tableBody.innerHTML="";
@@ -966,7 +291,7 @@ function loadMembers(){
       for(let i=1;i<rows.length;i++){
         let cells=rows[i].split(",").slice(1);
         if(cells.every(c=>c.trim()==="")) continue;
-        let mobile=cells[0] ? cells[0].trim() : ""; let email=cells[1] ? cells[1].trim() : ""; let uniqueKey=mobile+"|"+email;
+        let mobile=cells[0].trim(); let email=cells[1].trim(); let uniqueKey=mobile+"|"+email;
         if(seen.has(uniqueKey)) continue; seen.add(uniqueKey);
 
         const row=document.createElement("tr"); row.innerHTML+=`<td>${serial}</td>`; serial++;
@@ -975,6 +300,7 @@ function loadMembers(){
     }).catch(err=>console.error("Error loading members:",err));
 }
 
+// FILTER MEMBERS
 function filterMembers(){
   const filter=document.getElementById("memberSearch").value.toUpperCase();
   const table=document.getElementById("memberTable");
@@ -986,227 +312,19 @@ function filterMembers(){
   }
 }
 
-/* ==========================
-   Helper: Drive URL preview
-   ========================== */
-function convertDriveURLToPreview(url, forVideo = false){
-  if(!url) return "";
-  let fileId = "";
-  try{
-    if(url.includes("file/d/")) fileId = url.split("file/d/")[1].split(/[/?#]/)[0];
-    else if(url.includes("id=")) fileId = url.split("id=")[1].split(/[&?#]/)[0];
-    else{
-      const m = url.match(/[-\w]{25,}/);
-      if(m) fileId = m[0];
-    }
-  }catch(e){ fileId = ""; }
-  if(!fileId) return url;
-  return forVideo ? `https://drive.google.com/file/d/${fileId}/preview` : `https://drive.google.com/uc?export=view&id=${fileId}`;
-}
-
-/* =========================
-   News: publish / load / delete
-   ========================= */
-function publishNewsPersistent(){
-  const title = document.getElementById("newsTitle").value.trim();
-  const desc = document.getElementById("newsDesc").value.trim();
-  const fileInput = document.getElementById("newsFile");
-  const status = document.getElementById("newsStatus");
-
-  if(!title || !desc){
-    status.textContent = "Title & Description required!";
-    status.style.color = "red";
-    return;
-  }
-
-  const params = new URLSearchParams();
-  params.append("title", title);
-  params.append("description", desc);
-  params.append("action", "addNews");
-
-  if(fileInput.files.length > 0){
-    const file = fileInput.files[0];
-    const reader = new FileReader();
-    reader.onload = function(e){
-      const base64Data = e.target.result.split(",")[1];
-      params.append("fileName", file.name);
-      params.append("fileData", base64Data);
-      params.append("mimeType", file.type);
-
-      status.textContent = "Publishing..."; status.style.color="blue";
-      fetch(newsAPI, { method:"POST", body: params })
-        .then(res=>res.json())
-        .then(data=>{
-          if(data.success){
-            status.textContent = "News published successfully!"; status.style.color="green";
-            document.getElementById("newsTitle").value="";
-            document.getElementById("newsDesc").value="";
-            fileInput.value="";
-            loadNews();
-          } else {
-            status.textContent = "Publish failed: "+(data.message||"Unknown error"); status.style.color="red";
-          }
-        })
-        .catch(err=>{ console.error(err); status.textContent="Error publishing news."; status.style.color="red"; });
-    };
-    reader.readAsDataURL(file);
-  } else {
-    status.textContent = "Publishing..."; status.style.color="blue";
-    fetch(newsAPI, { method:"POST", body: params })
-      .then(res=>res.json())
-      .then(data=>{
-        if(data.success){
-          status.textContent = "News published successfully!"; status.style.color="green";
-          document.getElementById("newsTitle").value="";
-          document.getElementById("newsDesc").value="";
-          loadNews();
-        } else {
-          status.textContent = "Publish failed: "+(data.message||"Unknown error"); status.style.color="red";
-        }
-      })
-      .catch(err=>{ console.error(err); status.textContent="Error publishing news."; status.style.color="red"; });
-  }
-}
-
-function loadNews(){
-  fetch(newsAPI + "?action=getAllNews")
-    .then(res=>res.json())
-    .then(data=>{
-      const newsList = document.getElementById("newsList");
-      newsList.innerHTML = "";
-      if(!Array.isArray(data) || data.length === 0){
-        newsList.innerHTML = "<p style='width:100%; text-align:center;'>No news available.</p>";
-        return;
-      }
-      data.reverse().forEach(item=>{
-        const newsDiv = document.createElement("div");
-        newsDiv.style.border="1px solid #ccc";
-        newsDiv.style.padding="10px";
-        newsDiv.style.width="250px";
-        newsDiv.style.textAlign="center";
-        newsDiv.dataset.id = item.id || "";
-
-        const newsTitleElem = document.createElement("h3");
-        newsTitleElem.textContent = item.title;
-        newsTitleElem.style.fontSize="1.1em";
-        newsTitleElem.style.color="#007bff";
-        newsDiv.appendChild(newsTitleElem);
-
-        const newsDescElem = document.createElement("p");
-        newsDescElem.textContent = item.description;
-        newsDescElem.style.fontSize="0.9em";
-        newsDiv.appendChild(newsDescElem);
-
-        if(item.fileUrl && item.fileType){
-          const lowerType = (item.fileType || "").toLowerCase();
-          if(lowerType.startsWith("image/")){
-            const img = document.createElement("img");
-            img.src = convertDriveURLToPreview(item.fileUrl, false);
-            img.style.maxWidth="100%";
-            img.style.maxHeight="150px";
-            img.style.marginTop="5px";
-            newsDiv.appendChild(img);
-          } else if(lowerType.startsWith("video/")){
-            const video = document.createElement("video");
-            video.src = convertDriveURLToPreview(item.fileUrl, true);
-            video.controls = true;
-            video.style.maxWidth="100%";
-            video.style.maxHeight="150px";
-            video.style.marginTop="5px";
-            newsDiv.appendChild(video);
-          } else {
-            const img = document.createElement("img");
-            img.src = convertDriveURLToPreview(item.fileUrl, false);
-            img.style.maxWidth="100%";
-            img.style.maxHeight="150px";
-            img.style.marginTop="5px";
-            newsDiv.appendChild(img);
-          }
-        }
-
-        if(currentRole === 'admin'){
-          const delBtn = document.createElement("button");
-          delBtn.textContent = "Delete";
-          delBtn.style.background="#dc3545";
-          delBtn.style.color="white";
-          delBtn.style.border="none";
-          delBtn.style.padding="5px 10px";
-          delBtn.style.marginTop="5px";
-          delBtn.style.cursor="pointer";
-          delBtn.onclick = ()=>deleteNews(item.id, newsDiv);
-          newsDiv.appendChild(delBtn);
-        }
-
-        newsList.appendChild(newsDiv);
-      });
-    })
-    .catch(err=>{
-      console.error("Error loading news:", err);
-      const newsList = document.getElementById("newsList");
-      newsList.innerHTML = "<p style='width:100%; text-align:center;'>Unable to load news.</p>";
-    });
-}
-
-function deleteNews(newsId, newsDiv){
-  if(currentRole !== 'admin') return;
-  if(!confirm("Are you sure you want to delete this news item?")) return;
-  const params = new URLSearchParams();
-  params.append("id", newsId);
-  params.append("action","deleteNews");
-
-  fetch(newsAPI, { method:"POST", body: params })
-    .then(res=>res.json())
-    .then(data=>{
-      if(data.success){
-        newsDiv.remove();
-      } else {
-        alert("Failed to delete news: "+(data.message||"Unknown error"));
-      }
-    })
-    .catch(err=>{ console.error(err); alert("Error deleting news."); });
-}
-
-/* openNewsTab: show news tab and load */
-function openNewsTab(){
-  document.querySelectorAll('.tabContent').forEach(tab=>tab.style.display='none');
-  const newsEl = document.getElementById('newsTab');
-  if(newsEl) newsEl.style.display='block';
-  loadNews();
-}
-
-/* Prevent easy view-source / right-click optionally */
 document.addEventListener('contextmenu', event => event.preventDefault());
 document.onkeydown = function(e) {
     if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
         return false;
     }
 };
-
-/* Small safety: global error logger so uncaught errors don't silently break UI */
-window.onerror = function(msg, src, line, col, err){
-  console.error("Global error:", msg, "at", src+":"+line+":"+col, err);
-  return false;
-};
-
+  
 </script>
+
 </body>
 </html>
 
 
 
-document.addEventListener('contextmenu', event => event.preventDefault());
-document.onkeydown = function(e) {
-    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
-        return false;
-    }
-};
 
-/* Small safety: global error logger so uncaught errors don't silently break UI */
-window.onerror = function(msg, src, line, col, err){
-  console.error("Global error:", msg, "at", src+":"+line+":"+col, err);
-  return false;
-};
 
-</script>
-</body>
-</html>
