@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News & Updates - Amola Yuva Shakti Mandal Samiti</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* General */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+body { background: linear-gradient(120deg, #f0f4ff, #e6f7ff); color:#333; overflow-x:hidden; }
+
+/* Header */
+header {
+  background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.4)), url('header-bg1.png') center/cover no-repeat;
+  color:white; padding:70px 20px; text-align:center; backdrop-filter:blur(6px); border-bottom:4px solid rgba(255,255,255,0.12);
+}
+.header-center img { width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid rgba(255,255,255,0.8); box-shadow:0 0 25px rgba(255,255,255,0.5); }
+.header-center h1 { font-size:2.2em; font-weight:700; }
+.header-center p { opacity:0.9; font-size:1.05em; }
+
+/* Navbar */
+nav.navbar {
+  background:#000; padding:12px 5px; display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
+}
+nav.navbar a {
+  color:white; text-decoration:none; font-weight:500; padding:6px 12px; border-radius:6px; transition:0.3s;
+}
+
+/* Highlighted News tab - text colorful and animated */
+nav.navbar a.highlight-news {
+  background: linear-gradient(90deg, #ff0066, #ffcc00, #00ffcc, #0066ff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight:700;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
+  padding:6px 12px;
+  border-radius:6px;
+  animation: gradientShift 3s ease infinite, neonPulse 1.5s infinite alternate;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav.navbar a.highlight-news:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+@keyframes neonPulse {
+  0% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
+  50% { text-shadow:0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff; }
+  100% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
+}
+
+/* Section */
+section { padding:50px 20px; max-width:1200px; margin:auto; }
+h2 { font-size:2.2em; color:#007bff; font-weight:700; margin-bottom:40px; }
+
+/* News Layout */
+.news-container { display:flex; flex-direction:column; align-items:center; gap:25px; padding:0 10px; }
+
+.news-card {
+  width:100%; max-width:800px;
+  border-left:6px solid #00c6ff;
+  border-radius:12px;
+  padding:20px 25px 25px 25px;
+  text-align:left;
+  transition:0.3s ease, background 0.3s ease;
+  position:relative;
+  min-height:100px;
+}
+.news-card:nth-child(odd){ background: linear-gradient(135deg, #fefefe, #f0f8ff); }
+.news-card:nth-child(even){ background: linear-gradient(135deg, #fff7e6, #e8f0ff); }
+.news-card:hover { transform:translateY(-4px); box-shadow:0 8px 25px rgba(0,0,0,0.15); }
+
+.news-card h3 {
+  font-size:1.6em;
+  font-weight:700;
+  background:linear-gradient(90deg, #ff6a00, #ee0979, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom:10px;
+}
+.news-card p { font-size:1em; line-height:1.6; color:#333; margin-bottom:10px; }
+.news-card img, .news-card video { width:100%; border-radius:10px; margin-top:12px; max-height:none; object-fit:contain; }
+
+/* Date/time on top-right */
+.news-time {
+  position:absolute;
+  top:15px;
+  right:20px;
+  display:inline-flex;
+  align-items:center;
+  font-size:0.85em; color:#fff;
+  background:#00c6ff;
+  padding:4px 10px;
+  border-radius:15px;
+  font-style:normal;
+  gap:5px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+.news-time svg { width:14px; height:14px; fill:white; }
+
+/* Footer */
+footer { background:#111; color:white; padding:20px; font-size:0.9em; margin-top:40px; letter-spacing:0.5px; }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-center">
+    <img src="IMG-20250911-WA0006.jpg" alt="Logo">
+    <h1>Amola Yuva Shakti Mandal Samiti</h1>
+    <p>Empowering Our Village Through Unity, Education & Progress</p>
+  </div>
+</header>
+
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="activities.html">Initiatives</a>
+  <a href="live.html">Live</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="join.html">Join Us</a>
+  <a href="donate.html">Support Us</a>
+  <a href="contact.html">Contact</a>
+  <a href="member.html">Login</a>
+  <a href="news.html" class="highlight-news">रंत रैबार</a>
+</nav>
+
+<section>
+  <h2>News & Updates</h2>
+  <div id="newsContainer" class="news-container">Loading news...</div>
+
+
+</section>
+
+<footer style="text-align:center;">© 2025 Amola Yuva Shakti Mandal Samiti | All Rights Reserved<p>Designed & Managed by Rohit Amoli</p></footer>
+
+<script>
+const newsAPI = "https://script.google.com/macros/s/AKfycbxGHoTliYvKU7bztEawXxYmnJO_WmpJlfvy2RgeCBC9DrKCJzUaWPZEefrsMTVLaerT/exec";
+
+function convertDriveURLToPreview(url, forVideo = false) {
+  if (!url) return "";
+  let fileId = "";
+  try {
+    if (url.includes("file/d/")) fileId = url.split("file/d/")[1].split(/[/?#]/)[0];
+    else if (url.includes("id=")) fileId = url.split("id=")[1].split(/[&?#]/)[0];
+    else { const m = url.match(/[-\w]{25,}/); if (m) fileId = m[0]; }
+  } catch { fileId = ""; }
+  if (!fileId) return url;
+  return forVideo ? `https://drive.google.com/file/d/${fileId}/preview` : `https://drive.google.com/uc?export=view&id=${fileId}`;
+}
+
+function formatDateTime(dateStr){
+  const d = new Date(dateStr);
+  const day = String(d.getDate()).padStart(2,'0');
+  const month = String(d.getMonth()+1).padStart(2,'0');
+  const year = d.getFullYear();
+  const hours = String(d.getHours()).padStart(2,'0');
+  const minutes = String(d.getMinutes()).padStart(2,'0');
+  return `${day}-${month}-${year} ${hours}:${minutes}`;
+}
+
+function getNewsDate(item){
+  return item.date || item.timestamp || item.createdAt || item.updatedAt || null;
+}
+
+async function loadNews(){
+  const container = document.getElementById("newsContainer");
+  container.innerHTML = "Loading news...";
+  try {
+    const res = await fetch(newsAPI + "?action=getAllNews");
+    const data = await res.json();
+    if(!Array.isArray(data) || data.length === 0){
+      container.innerHTML = "No news available.";
+      return;
+    }
+    container.innerHTML = "";
+    data.reverse().forEach(item=>{
+      const card = document.createElement("div");
+      card.className = "news-card";
+
+      const newsDateStr = getNewsDate(item);
+      if(newsDateStr){
+        card.innerHTML += `<div class="news-time">
+          <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H5V8h14v13zm-7-11h2v6h-2V10zm0 8h2v2h-2v-2z"/></svg>
+          ${formatDateTime(newsDateStr)}
+        </div>`;
+      }
+
+      card.innerHTML += `<h3>${item.title || ""}</h3>`;
+      card.innerHTML += `<p>${item.description || ""}</p>`;
+
+      if(item.fileUrl){
+        const isVideo = /\.(mp4|webm|ogg)$/i.test(item.fileUrl);
+        if(isVideo) card.innerHTML += `<video src="${convertDriveURLToPreview(item.fileUrl,true)}" controls></video>`;
+        else card.innerHTML += `<img src="${convertDriveURLToPreview(item.fileUrl,false)}" />`;
+      }
+
+      container.appendChild(card);
+    });
+  } catch{
+    container.innerHTML = "Unable to load news at this time.";
+  }
+}
+
+window.onload = loadNews;
+</script>
+
+</body>
+</html>
