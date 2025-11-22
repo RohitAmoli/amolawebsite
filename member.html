@@ -3,164 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Member Login - Amola Yuva Shakti Mandal Samiti</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Member/Admin Login - Amola Yuva Shakti Mandal Samiti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+/* ------------------ Navbar ------------------ */
+nav.navbar {
+  background:#000; padding:12px 5px;
+  display:flex; flex-wrap:wrap;
+  justify-content:center; gap:10px;
+  overflow-x:auto; -webkit-overflow-scrolling: touch;
+}
+nav.navbar a {
+  flex: 0 0 auto;
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+  padding:6px 12px;
+  border-radius:6px;
+  transition:0.3s;
+  white-space:nowrap;
+}
 
-    body {
-      background-color: #f8f9fa;
-      color: #333;
-      line-height: 1.6;
-    }
+/* Highlighted News tab */
+nav.navbar a.highlight-news {
+  background: linear-gradient(90deg, #ff0066, #ffcc00, #00ffcc, #0066ff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight:700;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
+  animation: gradientShift 3s ease infinite, neonPulse 1.5s infinite alternate;
+}
+nav.navbar a.highlight-news:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff;
+}
 
-    header {
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                  url('header-bg1.png') center/cover no-repeat;
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
-    }
+/* Animations */
+@keyframes gradientShift {0% {background-position:0% 50%;}50% {background-position:100% 50%;}100% {background-position:0% 50%;}}
+@keyframes neonPulse {0% {text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 20px #fff;}50% {text-shadow:0 0 15px #fff,0 0 25px #ff0,0 0 35px #0ff;}100% {text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 20px #fff;}}
 
-    .header-center {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
+/* Highlighted tab */
+.highlight-tab {
+  background: linear-gradient(45deg, #ff0066, #ffcc00, #00ffcc, #0066ff);
+  background-size: 300% 300%;
+  color: #fff;
+  font-weight:700;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
+  animation: gradientShift 3s ease infinite, neonPulse 1.5s infinite alternate, popin 0.6s ease forwards;
+  transform: translateY(-2px);
+  border-radius:6px;
+  padding:6px 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.highlight-tab:hover { transform: scale(1.1); box-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff; }
+@keyframes popin {0% { transform: scale(0.3) translateY(-2px); opacity:0; }70% { transform: scale(1.2) translateY(-2px); opacity:1; }100% { transform: scale(1) translateY(-2px); opacity:1; }}
 
-    .header-center img {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid white;
-    }
-
-    .header-center h1 {
-      font-size: 1.9em;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .header-center p {
-      font-size: 1em;
-      font-weight: 300;
-    }
-
-    /* Navbar fixed for single-line */
-    nav.navbar {
-      background:#000; 
-      padding:12px 5px; 
-      text-align:center; 
-      white-space: nowrap; /* keep all links in one line */
-      overflow-x: auto;    /* horizontal scroll if screen is small */
-      -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
-    }
-
-    nav.navbar a {
-      display:inline-block;
-      color:white; 
-      text-decoration:none; 
-      margin:0 12px; 
-      font-weight:500; 
-      transition: color 0.3s, transform 0.3s; 
-      white-space: nowrap;
-    }
-
-    nav.navbar a:hover {
-      color: #ffe600;
-      transform: scale(1.1);
-    }
-
-    /* Highlight / Blinking Tab Style */
-    nav.navbar a.highlight-tab {
-      background: linear-gradient(90deg, #ff0066, #ffcc00, #00ffcc, #0066ff);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 700;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
-      padding: 6px 12px;
-      border-radius: 6px;
-      animation: gradientShift 3s ease infinite, neonPulse 1.5s infinite alternate;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    nav.navbar a.highlight-tab:hover {
-      transform: scale(1.1);
-      text-shadow: 0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff;
-      cursor: pointer;
-    }
-
-    @keyframes gradientShift {
-      0% { background-position:0% 50%; }
-      50% { background-position:100% 50%; }
-      100% { background-position:0% 50%; }
-    }
-
-    @keyframes neonPulse {
-      0% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
-      50% { text-shadow:0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff; }
-      100% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
-    }
-
-    /* Login Section */
-    section#login {
-      padding: 50px 20px;
-      max-width: 450px;
-      margin: 30px auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    section#login h2 {
-      margin-bottom: 25px;
-      color:#007bff;
-    }
-
-    section#login input[type="text"],
-    section#login input[type="password"] {
-      width: 90%;
-      padding: 10px 12px;
-      margin: 8px 0;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 1em;
-    }
-
-    section#login button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      background: #007bff;
-      color: white;
-      font-size: 1em;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    section#login button:hover {
-      background: #0056b3;
-    }
-
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 15px 0;
-      font-size: 0.9em;
-      margin-top: 30px;
-    }
-
+/* ------------------ General Styles ------------------ */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+body { background-color:#f8f9fa; color:#333; line-height:1.6; text-align:center; }
+header { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('header-bg1.png') center/cover no-repeat; color:white; padding:60px 20px; text-align:center; animation: fadeInDown 1s ease-in-out; }
+.header-center { display:flex; flex-direction:column; align-items:center; gap:10px; }
+.header-center img { width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid white; box-shadow:0 0 15px rgba(255,255,255,0.3); }
+.header-center h1 { font-size:1.9em; font-weight:700; letter-spacing:1px; }
+.header-center p { font-size:1em; font-weight:300; }
+section { padding:50px 20px; animation: fadeInUp 1.2s ease-in-out; }
+.login-container, .upload-container { max-width:450px; margin:20px auto; padding:30px; background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('header-bg1.png') center/cover fixed; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); text-align:center; }
+h2 { color:#007bff; margin-bottom:15px; font-size:1.6em; font-weight:700; }
+p { color:#555; font-size:1em; margin-bottom:10px; }
+input[type="password"], input[type="file"], input[type="text"], textarea { width:90%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; font-size:1em; }
+button { background-color:#007bff; color:#fff; border:none; padding:10px 25px; border-radius:8px; cursor:pointer; font-weight:600; transition: background-color 0.3s ease, transform 0.3s ease; }
+button:hover { background-color:#0056b3; transform: scale(1.05); }
+.tabBtn { background-color:#007bff; color:white; border:none; padding:10px 20px; margin:0 5px; border-radius:6px; cursor:pointer; font-weight:600; transition: background-color 0.3s ease; }
+.tabBtn:hover { background-color:#0056b3; }
+.tabContent { animation: fadeInUp 0.8s ease-in-out; margin-top:20px; }
+#memberTable { width:100%; margin-top:20px; border-collapse:collapse; display:block; max-height:400px; overflow-y:auto; }
+#memberTable thead { position: sticky; top:0; }
+#memberTable th, #memberTable td { border:1px solid #ccc; padding:8px; text-align:left; }
+#memberTable th { background:#007bff; color:white; }
+.gallery { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; margin-top:20px; }
+.gallery div { border:1px solid #ccc; padding:10px; text-align:center; width:200px; }
+.gallery img, .gallery video { max-width:100%; max-height:150px; display:block; margin-bottom:5px; }
+footer { background:#111; color:white; text-align:center; padding:18px 0; font-size:0.9em; margin-top:40px; box-shadow:0 -2px 10px rgba(0,0,0,0.3); }
+.tab-buttons { display:flex; justify-content:center; gap:10px; margin-bottom:15px; }
+.tab-btn { flex:1; padding:12px; border:none; border-radius:8px 8px 0 0; background:#ddd; color:#333; font-weight:500; cursor:pointer; transition:all 0.3s ease; }
+.tab-btn.active { background:#007bff; color:#fff; }
+@keyframes fadeInDown { from { opacity:0; transform:translateY(-30px);} to { opacity:1; transform:translateY(0);} }
+@keyframes fadeInUp { from { opacity:0; transform:translateY(30px);} to { opacity:1; transform:translateY(0);} }
+@keyframes fadeIn { from { opacity:0;} to { opacity:1;} }
   </style>
 </head>
 <body>
@@ -183,22 +113,123 @@
   <a href="donate.html">Support Us</a>
   <a href="contact.html">Contact</a>
   <a href="member.html">Login</a>
-  <a href="news.html" class="highlight-tab">रंत रैबार</a>
+  <a href="news.html" class="highlight-news">News</a>
 </nav>
 
-<section id="login">
-  <h2>Member Login</h2>
-  <form>
-    <input type="text" placeholder="Username" required><br>
-    <input type="password" placeholder="Password" required><br>
-    <button type="submit">Login</button>
-  </form>
+<section id="loginSection">
+  <div class="login-container">
+    <h2>Login Portal</h2>
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="openLoginTab('member')">Member Login</button>
+      <button class="tab-btn" onclick="openLoginTab('admin')">Admin Login</button>
+    </div>
+
+    <div id="memberTabContent" class="tabContent" style="display:block;">
+      <input type="password" id="memberCode" placeholder="Enter Member Access Code">
+      <button onclick="checkLogin('member')">Login</button>
+      <p id="memberMessage"></p>
+      <p>Members can access their profile, view content, and participate in activities.</p>
+    </div>
+
+    <div id="adminTabContent" class="tabContent" style="display:none;">
+      <input type="password" id="adminCode" placeholder="Enter Admin Access Code">
+      <button onclick="checkLogin('admin')">Login</button>
+      <p id="adminMessage"></p>
+      <p>Admins can manage members and perform all system operations.</p>
+    </div>
+  </div>
+</section>
+
+<section id="uploadSection" style="display:none;">
+  <div style="text-align:right; margin-bottom:10px;">
+    <button onclick="logoutMember()" style="background:#dc3545;">Logout</button>
+  </div>
+  <div style="text-align:center; margin-bottom:20px;" id="tabsContainer">
+    <button class="tabBtn" onclick="openTab('mediaTab')" id="mediaTabBtn">Media Upload</button>
+    <button class="tabBtn" onclick="openTab('memberListTab')">Member List</button>
+    <button class="tabBtn" onclick="openNewsTab()">News Publish</button>
+  </div>
+  <!-- MEDIA UPLOAD -->
+  <div id="mediaTab" class="tabContent" style="display:none;">
+    <div class="upload-container">
+      <h2>Media Upload</h2>
+      <input type="file" id="fileInput" accept="image/*,video/*">
+      <button onclick="uploadFile()">Upload</button>
+      <p id="uploadStatus"></p>
+    </div>
+    <div id="mediaGallery" class="gallery"></div>
+  </div>
+  <!-- MEMBER LIST -->
+  <div id="memberListTab" class="tabContent" style="display:none;">
+    <h2>Registered Members</h2>
+    <p>Search members:</p>
+    <input type="text" id="memberSearch" placeholder="Search members..." onkeyup="filterMembers()">
+    <p>Or download complete list:</p>
+    <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQMXTRIOrP0xYcPWd0JoinzcQpxa2v8cjsF40l_QnTlcOchBelbWxX97t33osgrPoHjMMiE6ulMlGbM/pub?output=csv" target="_blank">
+      <button>Download CSV</button>
+    </a>
+    <div style="overflow-x:auto; max-height:400px; margin-top:10px;">
+      <table id="memberTable">
+        <thead><tr id="memberTableHeader"></tr></thead>
+        <tbody id="memberTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+  <!-- NEWS PUBLISH -->
+  <div id="newsTab" class="tabContent" style="display:none;">
+    <div class="upload-container">
+      <h2>Publish News & Updates</h2>
+      <input type="text" id="newsTitle" placeholder="Enter News Title">
+      <textarea id="newsDesc" placeholder="Enter News Description" style="width:90%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; height:80px;"></textarea>
+      <input type="file" id="newsFile" accept="image/*,video/*">
+      <button onclick="publishNewsPersistent()">Publish</button>
+      <p id="newsStatus"></p>
+    </div>
+    <div id="newsList" class="gallery" style="margin-top:20px;"></div>
+  </div>
 </section>
 
 <footer>
   © 2025 Amola Yuva Shakti Mandal Samiti | All Rights Reserved<br>
   Designed & Managed by Rohit Amoli
 </footer>
+
+<script>
+/* Login & Tabs */
+const adminCode="mission123@2026";
+const memberCode="member@2026";
+let currentRole="";
+
+function openLoginTab(tab){
+  document.getElementById('memberTabContent').style.display=(tab==='member')?'block':'none';
+  document.getElementById('adminTabContent').style.display=(tab==='admin')?'block':'none';
+  const btns=document.querySelectorAll('.tab-buttons .tab-btn');
+  btns.forEach(b=>b.classList.remove('active'));
+  btns[tab==='member'?0:1].classList.add('active');
+}
+
+function checkLogin(role){
+  const code=role==='member'?document.getElementById('memberCode').value.trim():document.getElementById('adminCode').value.trim();
+  if((role==='member' && code===memberCode)||(role==='admin' && code===adminCode)){
+    currentRole=role;
+    document.getElementById('loginSection').style.display='none';
+    document.getElementById('uploadSection').style.display='block';
+    loadMembers();
+    if(currentRole==='admin'){ openTab('mediaTab'); document.getElementById("mediaTabBtn").style.display="inline-block"; loadMedia(); }
+    else{ openTab('memberListTab'); document.getElementById("mediaTabBtn").style.display="none"; document.getElementById("mediaTab").style.display="none"; }
+  } else { document.getElementById(role+'Message').textContent='Invalid access code!'; }
+}
+
+function logoutMember(){
+  currentRole="";
+  document.getElementById('uploadSection').style.display='none';
+  document.getElementById('loginSection').style.display='block';
+  document.getElementById('memberCode').value='';
+  document.getElementById('adminCode').value='';
+  document.getElementById('memberMessage').textContent='';
+  document.getElementById('adminMessage').textContent='';
+}
+</script>
 
 </body>
 </html>
