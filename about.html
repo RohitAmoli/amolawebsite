@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us - Amola Yuva Shakti Mandal Samiti</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     * {
       margin: 0;
@@ -19,13 +21,13 @@
       line-height: 1.6;
     }
 
+    /* ------------ HEADER ------------ */
     header {
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
                   url('header-bg1.png') center/cover no-repeat;
       color: white;
       padding: 60px 20px;
       text-align: center;
-      animation: fadeInDown 1s ease-in-out;
     }
 
     .header-center {
@@ -47,18 +49,14 @@
       font-size: 1.9em;
       font-weight: 700;
       letter-spacing: 1px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
     }
 
-    .header-center p {
-      font-size: 1em;
-      font-weight: 300;
-    }
-
+    /* ------------ NAVBAR ------------ */
     nav.navbar {
       background-color: #000;
       padding: 10px 0;
       text-align: center;
-      animation: fadeIn 1.2s ease-in-out;
     }
 
     nav.navbar a {
@@ -66,73 +64,74 @@
       text-decoration: none;
       margin: 0 12px;
       font-weight: 500;
-      transition: color 0.3s, transform 0.3s;
+      transition: color 0.3s;
     }
 
     nav.navbar a:hover {
       color: #ffe600;
-      transform: scale(1.1);
     }
 
-/* Highlight / Blinking Tab Style */
-nav.navbar a.highlight-tab {
-  background: linear-gradient(90deg, #ff0066, #ffcc00, #00ffcc, #0066ff);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
-  padding: 6px 12px;
-  border-radius: 6px;
-  animation: gradientShift 3s ease infinite, neonPulse 1.5s infinite alternate;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-nav.navbar a.highlight-tab:hover {
-  transform: scale(1.1);
-  text-shadow: 0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff;
-  cursor: pointer;
-}
-
-/* Animations */
-@keyframes gradientShift {
-  0% { background-position:0% 50%; }
-  50% { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
-}
-
-@keyframes neonPulse {
-  0% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
-  50% { text-shadow:0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff; }
-  100% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
-}
-
-
-    
-    section#about {
-      padding: 60px 20px;
-      background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
-                  url('header-bg1.png') center/cover fixed;
-      border-radius: 10px;
-      margin: 20px auto;
+    /* ------------ OBJECTIVES SECTION ------------ */
+    .objectives-section {
+      padding: 50px 20px;
       width: 90%;
-      max-width: 1000px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      animation: fadeInUp 1.2s ease-in-out;
+      max-width: 1100px;
+      margin: auto;
     }
 
-    section#about h2 {
-      color: #007bff;
+    .objectives-section h2 {
       text-align: center;
-      margin-bottom: 25px;
-      font-size: 1.6em;
-      font-weight: 600;
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #007bff;
+      font-weight: 700;
     }
 
-    section#about p {
+    .objective-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      border: 1px solid #e8e8e8;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+      transition: background 0.3s;
+    }
+
+    .card:hover {
+      background: #f5f9ff;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      padding-left: 18px;
+    }
+
+    .card ul li {
+      margin-bottom: 6px;
+      font-size: 0.95em;
+    }
+
+    /* ------------ MEMBERS SECTION ------------ */
+    section.members {
+      width: 90%;
+      max-width: 1100px;
+      margin: 40px auto;
+    }
+
+    section.members h2 {
+      color: #007bff;
       margin-bottom: 20px;
-      text-align: justify;
-      font-size: 1.05em;
+      text-align: center;
     }
 
     .about-gallery {
@@ -140,27 +139,19 @@ nav.navbar a.highlight-tab:hover {
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 20px;
       justify-items: center;
-      margin-top: 30px;
     }
 
     .about-member {
       text-align: center;
       background: white;
       padding: 15px;
-      border-radius: 12px;
+      border-radius: 10px;
       box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .about-member:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
 
     .about-member img {
-      width: 100%;
-      max-width: 130px;
-      height: 130px;
+      width: 110px;
+      height: 110px;
       object-fit: cover;
       border-radius: 50%;
       border: 3px solid #007bff;
@@ -169,44 +160,40 @@ nav.navbar a.highlight-tab:hover {
     .about-member p {
       margin-top: 10px;
       font-weight: 600;
-      color: #333;
       font-size: 0.95em;
+      color: #333;
     }
 
+    /* ------------ FOOTER ------------ */
     footer {
       background: #333;
       color: white;
       text-align: center;
       padding: 15px 0;
-      font-size: 0.9em;
       margin-top: 30px;
+      font-size: 0.9em;
     }
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    /* ------------ RESPONSIVE ------------ */
+    @media (max-width: 768px) {
+      .header-center h1 {
+        font-size: 1.5em;
+      }
+      nav.navbar a {
+        display: inline-block;
+        margin: 6px;
+      }
     }
   </style>
 </head>
+
 <body>
 
 <header>
   <div class="header-center">
     <img src="IMG-20250911-WA0006.jpg" alt="Logo">
-    <div class="text">
-      <h1>Amola Yuva Shakti Mandal Samiti</h1>
-      <p>Empowering Our Village Through Unity, Education & Progress</p>
-    </div>
+    <h1>Amola Yuva Shakti Mandal Samiti</h1>
+    <p>Empowering Our Village Through Unity, Education & Progress</p>
   </div>
 </header>
 
@@ -220,12 +207,10 @@ nav.navbar a.highlight-tab:hover {
   <a href="donate.html">Support Us</a>
   <a href="contact.html">Contact</a>
   <a href="member.html">Login</a>
- <a href="news.html" class="highlight-tab">News</a>
 </nav>
 
 <!-- OBJECTIVES SECTION -->
 <section class="objectives-section">
-<p><strong>अमोला युवा शक्ति मण्डल समिति</strong>, एक गैर-राजनीतिक, सामाजिक एवं चैरिटेबल संस्था है। इसका उद्देश्य गाँव अमोला और बाहर बसे परिवारों के बीच आपसी सहयोग, एकता और सामाजिक विकास को बढ़ावा देना है।<br>
   <h2>संस्था का उद्देश्य</h2>
 
   <div class="objective-cards">
@@ -280,7 +265,7 @@ nav.navbar a.highlight-tab:hover {
 
 <!-- MEMBERS SECTION -->
 <section class="members">
-  <h2>समिति पदाधिकारी विवरण</h2>
+  <h2>समिति पदाधिकारी विवरण:</h2>
 
   <div class="about-gallery">
 
@@ -332,7 +317,6 @@ nav.navbar a.highlight-tab:hover {
   </div>
 </section>
 
-
 <footer>
   © 2025 Amola Yuva Shakti Mandal Samiti | All Rights Reserved<br>
   Designed & Managed by Rohit Amoli
@@ -340,8 +324,3 @@ nav.navbar a.highlight-tab:hover {
 
 </body>
 </html>
-
-
-
-
-
