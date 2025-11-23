@@ -312,7 +312,7 @@ slides.forEach((s)=>{
 let current=0; const total=slides.length;
 const updateUI=()=>{ slidesContainer.style.transform=`translateX(-${current*100}%)`; };
 const goToSlide=(i)=>{ current=(i+total)%total; updateUI(); };
-setInterval(()=>goToSlide(current+1),6000);
+setInterval(()=>goToSlide(current+1),5000);
 
 /* TOP BUTTON */
 const topBtn=document.getElementById('topBtn');
@@ -325,6 +325,7 @@ document.getElementById('visitorNumber').textContent=Math.floor(Math.random()*50
 
 </body>
 </html>
+
 
 
 
